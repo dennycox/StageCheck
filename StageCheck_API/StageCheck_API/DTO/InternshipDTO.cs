@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StageCheck_API.Models
+namespace StageCheck_API.DTO
 {
-    public class Internship
+    public class InternshipDTO
     {
         [Key]
         public int Id { get; set; }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StageCheck_API.Data;
+using StageCheck_API.DTO;
 using StageCheck_API.Models;
 
 namespace StageCheck_API.Controllers
@@ -23,14 +24,16 @@ namespace StageCheck_API.Controllers
 
         // GET: api/Internships
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Internship>>> GetInternships()
+        public async Task<ActionResult<IEnumerable<InternshipDTO>>> GetInternships()
         {
-            return await _context.Internships.ToListAsync();
+            return await _context.Internships
+                .Select(x => InternshipToDTO(x))
+                .ToListAsync();
         }
 
         // GET: api/Internships/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Internship>> GetInternship(int id)
+        public async Task<ActionResult<InternshipDTO>> GetInternship(int id)
         {
             var internship = await _context.Internships.FindAsync(id);
 
@@ -39,51 +42,58 @@ namespace StageCheck_API.Controllers
                 return NotFound();
             }
 
-            return internship;
+            return InternshipToDTO(internship);
         }
 
         // PUT: api/Internships/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInternship(int id, Internship internship)
+        public async Task<IActionResult> PutInternship(int id, InternshipDTO internshipDTO)
         {
-            if (id != internship.Id)
+            if (id != internshipDTO.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(internship).State = EntityState.Modified;
+            var internship = await _context.Internships.FindAsync(id);
+            if(internship == null)
+            {
+                return NotFound();
+            }
+
+            internship.Title = internshipDTO.Title;
+            internship.Description = internshipDTO.Description;
+            internship.CompanyId = internshipDTO.CompanyId;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException) when (!InternshipExists(id))
             {
-                if (!InternshipExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound();
             }
 
             return NoContent();
         }
 
         // POST: api/Internships
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Internship>> PostInternship(Internship internship)
+        public async Task<ActionResult<InternshipDTO>> PostInternship(InternshipDTO internshipDTO)
         {
+            var internship = new Internship
+            {
+                Title = internshipDTO.Title,
+                Description = internshipDTO.Description,
+                CompanyId = internshipDTO.CompanyId
+            };
+
             _context.Internships.Add(internship);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInternship", new { id = internship.Id }, internship);
+            return CreatedAtAction(
+                nameof(GetInternship),
+                new { id = internship.Id },
+                InternshipToDTO(internship));
         }
 
         // DELETE: api/Internships/5
@@ -91,6 +101,7 @@ namespace StageCheck_API.Controllers
         public async Task<ActionResult<Internship>> DeleteInternship(int id)
         {
             var internship = await _context.Internships.FindAsync(id);
+            
             if (internship == null)
             {
                 return NotFound();
@@ -99,12 +110,19 @@ namespace StageCheck_API.Controllers
             _context.Internships.Remove(internship);
             await _context.SaveChangesAsync();
 
-            return internship;
+            return NoContent();
         }
 
-        private bool InternshipExists(int id)
-        {
-            return _context.Internships.Any(e => e.Id == id);
-        }
+        private bool InternshipExists(int id) =>
+            _context.Internships.Any(e => e.Id == id);
+
+        private static InternshipDTO InternshipToDTO(Internship internship) =>
+            new InternshipDTO
+            {
+                Id = internship.Id,
+                Title = internship.Title,
+                Description = internship.Description,
+                CompanyId = internship.CompanyId
+            };
     }
 }
