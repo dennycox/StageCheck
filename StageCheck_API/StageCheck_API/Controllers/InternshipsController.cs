@@ -62,7 +62,6 @@ namespace StageCheck_API.Controllers
 
             internship.Title = internshipDTO.Title;
             internship.Description = internshipDTO.Description;
-            internship.CompanyId = internshipDTO.CompanyId;
 
             try
             {
@@ -84,7 +83,6 @@ namespace StageCheck_API.Controllers
             {
                 Title = internshipDTO.Title,
                 Description = internshipDTO.Description,
-                CompanyId = internshipDTO.CompanyId
             };
 
             _context.Internships.Add(internship);
@@ -122,7 +120,6 @@ namespace StageCheck_API.Controllers
                 Id = internship.Id,
                 Title = internship.Title,
                 Description = internship.Description,
-                CompanyId = internship.CompanyId
             };
     }
 }

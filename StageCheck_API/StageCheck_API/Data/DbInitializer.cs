@@ -20,7 +20,7 @@ namespace StageCheck_API.Data
             var internships = new Internship[]
             {
                 new Internship{Title="ICT hbo afstudeerstage",
-                    Description="Hele leuke en uitdagende stageopdracht", CompanyId="1",
+                    Description="Hele leuke en uitdagende stageopdracht",
                 }
             };
             foreach (Internship i in internships)
