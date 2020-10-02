@@ -4,16 +4,24 @@ import axios from "axios";
 const InternshipsIri = "https://localhost:44330/api/Internships"
 
 function InternshipList() {
-    const [internshipList, setInternshipList] = unseState([]);
+    const [internshipList, setInternshipList] = useState([]);
 
     useEffect(() => {
         axios.get(InternshipsIri).then((res) => {
-            const newInternshipList = res.data;
-            setInternshipList(newInternshipList);
+            console.log(res)
+            //setInternshipList(res.data);
         });
     }, []);
 
-    const addInternship = (ip) => {
-        
-    }
+    return (
+        <div>
+            <ul>
+                {internshipList.map(internship => (
+                    <li key={internship.id}>{internship.title}</li>
+                ))}
+            </ul>
+        </div>
+    )
 }
+
+export default InternshipList;
