@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Internship() {
+function Internship({ internship }) {
     return (
         <Card style={{ width: '18rem' }}>
             <Card.Body>
-                <Card.Title>One Squad ICT BV</Card.Title>
-                <Card.Text>
-                    Wij hebben leerzame en uitdagende stageplekken beschikbaar
-                    voor HBO ICT studenten
-                    </Card.Text>
+                <Card.Title>{internship.title}</Card.Title>
+                <Card.Text>{internship.description}</Card.Text>
                 <Card.Link href="#">Meer informatie</Card.Link>
                 <Card.Link href="#">Contact</Card.Link>
             </Card.Body>

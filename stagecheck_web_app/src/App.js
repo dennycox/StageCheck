@@ -8,8 +8,13 @@ function App() {
   return (
     <div>
         <Banner />
-        <Internship />
-        <InternshipList />
+        <div class="container">
+          <div class="row pt-3">
+            <div class="col">
+              <InternshipList />
+            </div>
+          </div>
+        </div>
     </div>
   );
 }

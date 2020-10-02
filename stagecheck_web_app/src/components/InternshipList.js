@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Internship from "./Internship";
 
 const InternshipsIri = "https://localhost:44330/api/Internships/"
 
@@ -9,17 +10,15 @@ function InternshipList() {
     useEffect(() => {
         axios.get(InternshipsIri).then((res) => {
             console.log(res)
-            //setInternshipList(res.data);
+            setInternshipList(res.data);
         });
     }, []);
 
     return (
         <div>
-            <ul>
-                {internshipList.map(internship => (
-                    <li key={internship.id}>{internship.title}</li>
-                ))}
-            </ul>
+            {internshipList.map(internship => (
+                <Internship internship={internship} />
+            ))}
         </div>
     )
 }
