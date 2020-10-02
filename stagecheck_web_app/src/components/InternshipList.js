@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const InternshipsIri = "https://localhost:44330/api/Internships"
+const InternshipsIri = "https://localhost:44330/api/Internships/"
 
 function InternshipList() {
     const [internshipList, setInternshipList] = useState([]);

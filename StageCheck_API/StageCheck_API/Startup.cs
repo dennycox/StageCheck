@@ -31,6 +31,7 @@ namespace StageCheck_API
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +41,9 @@ namespace StageCheck_API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Disable when in production!
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
