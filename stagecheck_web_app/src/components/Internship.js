@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Internship({ internship }) {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '60rem' }}>
             <Card.Body>
                 <Card.Title>{internship.title}</Card.Title>
                 <Card.Text>{internship.description}</Card.Text>

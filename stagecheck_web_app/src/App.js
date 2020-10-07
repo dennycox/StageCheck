@@ -9,7 +9,7 @@ function App() {
     <div>
         <Banner />
         <div class="container">
-          <div class="row pt-3">
+          <div class="row pt-5">
             <div class="col">
               <InternshipList />
             </div>
