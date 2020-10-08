@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Form } from 'react-bootstrap';
 
 function AddInternshipForm({ addInternship }) {
   const [title, setTitle] = useState("");
@@ -19,21 +20,21 @@ function AddInternshipForm({ addInternship }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Titel"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      ></input>
-      <input
-        type="text"
-        placeholder="Beschrijving"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      ></input>
-      <button className="grey-button">Voeg stage toe</button>
-    </form>
+    <div class="row pt-5">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label>Titel</Form.Label>
+          <Form.Control type="text" placeholder="Voer titel in"
+            onChange={(e) => setTitle(e.target.value)} />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Beschrijving</Form.Label>
+          <Form.Control type="text" placeholder="Voer beschrijving in"
+            onChange={(e) => setDescription(e.target.value)} />
+        </Form.Group>
+        <Button variant="primary" type="submit">Voeg stage toe</Button>
+      </Form>
+    </div>
   );
 }
 
