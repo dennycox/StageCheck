@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Internship({ internship }) {
+function Internship({ internship, deleteInternship }) {
+    const handleDelete = () => {
+        deleteInternship(internship);
+    };
+
     return (
         <Card style={{ width: '60rem' }}>
             <Card.Body>
@@ -10,6 +14,7 @@ function Internship({ internship }) {
                 <Card.Text>{internship.description}</Card.Text>
                 <Card.Link href="#">Meer informatie</Card.Link>
                 <Card.Link href="#">Contact</Card.Link>
+                <Button onClick={handleDelete}>Verwijderen</Button>
             </Card.Body>
         </Card>
     )
