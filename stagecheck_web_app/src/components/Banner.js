@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
-import { Navbar, Nav, Form, FormControl, Button, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom';
 
 function Banner() {
     return (
-        <Navbar bg="primary" variant="light">
-            <Navbar.Brand href="#home">
+        <Navbar bg="primary" expand="lg">
+            <Navbar.Brand href="/">
                 <img
                     src={logo}
                     height="40"
@@ -14,50 +20,41 @@ function Banner() {
                     alt="Stage Check logo"
                 />
             </Navbar.Brand>
-            <Nav className="mr-auto">
-                <Form inline>
-                    <FormControl type="text" placeholder="Vul hier je zoekterm in" className="mr-sm-2" />
-                </Form>
-                <Dropdown>
-                    <Dropdown.Toggle variant="default" id="dropdown-basic">
-                        Opleiding
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Alle opleidingen</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">ICT</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Bedrijfskunde</Dropdown.Item>
-                        <Dropdown.Item href="#/action-4">Verpleegkunde</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Form inline>
-                    <FormControl type="text" placeholder="Plaats of postcode" className="mr-sm-2" />
-                </Form>
-                <Dropdown>
-                    <Dropdown.Toggle variant="default" id="dropdown-basic">
-                        Straal
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Alle afstanden</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">3 km</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">5 km</Dropdown.Item>
-                        <Dropdown.Item href="#/action-4">10 km</Dropdown.Item>
-                        <Dropdown.Item href="#/action-5">15 km</Dropdown.Item>
-                        <Dropdown.Item href="#/action-6">20 km</Dropdown.Item>
-                        <Dropdown.Item href="#/action-7">25 km</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Button variant="light">Zoeken</Button>
-            </Nav>
-            <Dropdown>
-                <Dropdown.Toggle variant="default" id="dropdown-basic">
-                    Gebruikersnaam
-                    </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Mijn profiel</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Opgeslagen stages</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Uitloggen</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    <Form inline>
+                        <FormControl type="text" placeholder="Vul hier je zoekterm in" className="mr-sm-2" />
+                    </Form>
+                    <NavDropdown title="Opleiding" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="#action/3.1">Alle opleidingen</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">ICT</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">Bedrijfskunde</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.4">Verpleegkundige</NavDropdown.Item>
+                    </NavDropdown>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Plaats of postcode" className="mr-sm-2" />
+                    </Form>
+                    <NavDropdown title="Straal" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="#action/3.1">Alle afstanden</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">3 km</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">5 km</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.4">10 km</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.5">15 km</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.6">20 km</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.7">25 km</NavDropdown.Item>
+                    </NavDropdown>
+                    <Button variant="light">Zoeken</Button>
+                    <Nav.Link href="/stages">stages</Nav.Link>
+                </Nav>
+                <Nav>
+                    <NavDropdown title="Gebruikersnaam" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="#action/3.1">Mijn profiel</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">Opgeslagen stages</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">Uitloggen</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav>
+            </Navbar.Collapse>
         </Navbar>
     )
 }

@@ -8,7 +8,7 @@ function Internship({ internship, deleteInternship }) {
     };
 
     return (
-        <Card style={{ width: '60rem' }} className="my-3">
+        <Card className="my-3">
             <Card.Body>
                 <Card.Title>{internship.title}</Card.Title>
                 <Card.Text>{internship.description}</Card.Text>

@@ -2,6 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Internship from "./Internship";
 import AddInternshipForm from "./AddInternshipForm";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+    useParams
+} from 'react-router-dom';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const InternshipsIri = "https://localhost:44330/api/Internships/"
 
@@ -32,13 +41,31 @@ function InternshipList() {
         });
     };
 
+    let match = useRouteMatch();
+
     return (
-        <div>
-            {internshipList.map(internship => (
-                <Internship key={internship.id} internship={internship} deleteInternship={deleteInternship} />
-            ))}
-            <AddInternshipForm addInternship={addInternship} />
-        </div>
+        <Container className="my-3">
+            <Row>
+                <Col>
+                    <Switch>
+                        <Route path={`${match.url}/create`}>
+                            <Link to={`${match.url}`}>
+                                <Button variant="outline-primary">Terug</Button>
+                            </Link>
+                            <AddInternshipForm addInternship={addInternship} />
+                        </Route>
+                        <Route path="/">
+                            <Link to={`${match.url}/create`}>
+                                <Button variant="primary">Stage toevoegen</Button>
+                            </Link>
+                            {internshipList.map(internship => (
+                                    <Internship key={internship.id} internship={internship} deleteInternship={deleteInternship} />
+                                ))}
+                        </Route>
+                    </Switch>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

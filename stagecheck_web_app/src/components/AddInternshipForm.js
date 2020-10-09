@@ -20,7 +20,7 @@ function AddInternshipForm({ addInternship }) {
   };
 
   return (
-    <div className="row pt-5 pb-5">
+    <div className="col-md-6">
       <Form onSubmit={handleSubmit}>
         <h2>Stage toevoegen</h2>
         <Form.Group>
