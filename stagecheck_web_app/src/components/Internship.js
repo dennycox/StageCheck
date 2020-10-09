@@ -14,8 +14,10 @@ function Internship({ internship, deleteInternship }) {
                 <Card.Text>{internship.description}</Card.Text>
                 <Card.Link href="#">Meer informatie</Card.Link>
                 <Card.Link href="#">Contact</Card.Link>
-                <Button onClick={handleDelete}>Verwijderen</Button>
             </Card.Body>
+            <Card.Footer>
+                <Button onClick={handleDelete}>Verwijderen</Button>
+            </Card.Footer>
         </Card>
     )
 }

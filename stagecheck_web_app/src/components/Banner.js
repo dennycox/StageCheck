@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from './logo.png';
 import { Navbar, Nav, Form, FormControl, Button, Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -7,8 +8,8 @@ function Banner() {
         <Navbar bg="primary" variant="light">
             <Navbar.Brand href="#home">
                 <img
-                    src="/logo.png"
-                    height="30"
+                    src={logo}
+                    height="40"
                     className="d-inline-block align-top"
                     alt="Stage Check logo"
                 />

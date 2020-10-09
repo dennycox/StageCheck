@@ -9,9 +9,9 @@ function App() {
   return (
     <div>
         <Banner />
-        <div class="container">
-          <div class="row pt-5">
-            <div class="col">
+        <div className="container">
+          <div className="row pt-5">
+            <div className="col">
               <InternshipList />
             </div>
           </div>

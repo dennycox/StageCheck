@@ -20,8 +20,9 @@ function AddInternshipForm({ addInternship }) {
   };
 
   return (
-    <div class="row pt-5">
+    <div className="row pt-5 pb-5">
       <Form onSubmit={handleSubmit}>
+        <h2>Stage toevoegen</h2>
         <Form.Group>
           <Form.Label>Titel</Form.Label>
           <Form.Control type="text" placeholder="Voer titel in"
@@ -29,7 +30,7 @@ function AddInternshipForm({ addInternship }) {
         </Form.Group>
         <Form.Group>
           <Form.Label>Beschrijving</Form.Label>
-          <Form.Control type="text" placeholder="Voer beschrijving in"
+          <Form.Control as="textarea" rows={3} placeholder="Voer beschrijving in"
             onChange={(e) => setDescription(e.target.value)} />
         </Form.Group>
         <Button variant="primary" type="submit">Voeg stage toe</Button>
