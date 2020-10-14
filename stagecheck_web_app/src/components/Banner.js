@@ -45,7 +45,7 @@ function Banner() {
                         <NavDropdown.Item href="#action/3.7">25 km</NavDropdown.Item>
                     </NavDropdown>
                     <Button variant="light">Zoeken</Button>
-                    <Nav.Link href="/stages">stages</Nav.Link>
+                    <Nav.Link href="/stages">Alle stages</Nav.Link>
                 </Nav>
                 <Nav>
                     <NavDropdown title="Gebruikersnaam" id="basic-nav-dropdown">
