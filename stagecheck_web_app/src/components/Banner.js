@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
-import { Navbar, Nav, Form, FormControl, Button, NavDropdown, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button, Dropdown, NavDropdown, DropdownButton } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     BrowserRouter as Router,
@@ -26,26 +26,26 @@ function Banner() {
                     <Form inline>
                         <FormControl type="text" placeholder="Vul hier je zoekterm in" className="mr-sm-2" />
                     </Form>
-                    <NavDropdown title="Opleiding" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Alle opleidingen</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">ICT</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Bedrijfskunde</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.4">Verpleegkundige</NavDropdown.Item>
-                    </NavDropdown>
+                    <DropdownButton title="Alle opleidingen" id="basic-nav-dropdown" variant="secondary">
+                        <Dropdown.Item href="#action/3.1">Alle opleidingen</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.2">ICT</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.3">Bedrijfskunde</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.4">Verpleegkundige</Dropdown.Item>
+                    </DropdownButton>
                     <Form inline>
                         <FormControl type="text" placeholder="Plaats of postcode" className="mr-sm-2" />
                     </Form>
-                    <NavDropdown title="Straal" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Alle afstanden</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">3 km</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">5 km</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.4">10 km</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.5">15 km</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.6">20 km</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.7">25 km</NavDropdown.Item>
-                    </NavDropdown>
-                    <Button variant="light">Zoeken</Button>
-                    <Nav.Link href="/stages">Alle stages</Nav.Link>
+                    <DropdownButton title="Alle afstanden" id="basic-nav-dropdown" variant="secondary">
+                        <Dropdown.Item href="#action/3.1">Alle afstanden</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.2">3 km</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.3">5 km</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.4">10 km</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.5">15 km</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.6">20 km</Dropdown.Item>
+                        <Dropdown.Item href="#action/3.7">25 km</Dropdown.Item>
+                    </DropdownButton>
+                    <Button variant="light">Zoek</Button>
+                    <Nav.Link href="/stages">Toon alle stages</Nav.Link>
                 </Nav>
                 <Nav>
                     <NavDropdown title="Gebruikersnaam" id="basic-nav-dropdown">

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Internship from "./Internship";
-import AddInternshipForm from "./AddInternshipForm";
-import UpdateInternshipForm from "./UpdateInternshipForm";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Internship from './Internship';
+import AddInternshipForm from './AddInternshipForm';
+import UpdateInternshipForm from './UpdateInternshipForm';
 import {
     BrowserRouter as Router,
     Switch,
@@ -12,6 +12,7 @@ import {
     useParams
 } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import InternshipDetails from './InternshipDetails';
 
 const InternshipsUrl = "https://localhost:44330/api/Internships/"
 
@@ -25,8 +26,8 @@ function InternshipList() {
         });
     }, []);
 
-    const getInternship = (id) => {
-        axios.get(InternshipsUrl + id).then((res) => {
+    const getInternship = async (id) => {
+        await axios.get(InternshipsUrl + id).then((res) => {
             const internship = res.data;
             return internship;
         });
@@ -79,6 +80,13 @@ function InternshipList() {
                                 <Button variant="outline-primary">Terug</Button>
                             </Link>
                             <UpdateInternshipForm updateInternship={updateInternship} getInternship={getInternship} />
+                        </Route>
+                        {/* Details */}
+                        <Route path={`${path}/:id/details`}>
+                            <Link to={`${url}`}>
+                                <Button variant="outline-primary">Terug</Button>
+                            </Link>
+                            <InternshipDetails getInternship={getInternship} />
                         </Route>
                         {/* Internships */}
                         <Route path={`${path}`}>

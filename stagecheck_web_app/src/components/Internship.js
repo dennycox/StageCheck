@@ -26,11 +26,10 @@ function Internship({ internship, deleteInternship, updateInternship }) {
                 <Card.Title>{internship.title}</Card.Title>
                 <Card.Text>{internship.description}</Card.Text>
                 <Card.Link href={`${url}/${internship.id}`}>Meer informatie</Card.Link>
-                <Card.Link href="#">Contact</Card.Link>
             </Card.Body>
             <Card.Footer>
                 <Link to={`${url}/${internship.id}/update`}>
-                    <Button variant="outline-primary">Wijzig</Button>
+                    <Button variant="primary">Wijzig</Button>
                 </Link>            
                 <Button onClick={handleDelete}>Verwijderen</Button>
             </Card.Footer>
