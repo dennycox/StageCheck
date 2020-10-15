@@ -14,11 +14,8 @@ function UpdateInternshipForm({ updateInternship, getInternship }) {
 
   const internship = getInternship(id);
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-
-  setTitle(internship.title);
-  setDescription(internship.description);
+  const [title, setTitle] = useState(internship.title);
+  const [description, setDescription] = useState(internship.description);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -27,10 +27,13 @@ function InternshipList() {
     }, []);
 
     const getInternship = async (id) => {
+        var internship;
+        
         await axios.get(InternshipsUrl + id).then((res) => {
-            const internship = res.data;
-            return internship;
+            internship = res.data;
         });
+        
+        return internship;
     };
 
     const addInternship = (internship) => {
@@ -94,7 +97,7 @@ function InternshipList() {
                                 <Button variant="primary">Stage toevoegen</Button>
                             </Link>
                             {internshipList.map(internship => (
-                                <Internship key={internship.id} internship={internship} deleteInternship={deleteInternship} />
+                                <Internship key={internship.id} internship={internship} deleteInternship={deleteInternship} updateInternship={updateInternship}/>
                             ))}
                         </Route>
                     </Switch>
