@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useRouteMatch,
-    useParams
+  useParams
 } from 'react-router-dom';
 
 function UpdateInternshipForm({ updateInternship, getInternship }) {
@@ -25,6 +20,7 @@ function UpdateInternshipForm({ updateInternship, getInternship }) {
       title: title,
       description: description,
     };
+
     updateInternship(internship);
 
     setTitle("");

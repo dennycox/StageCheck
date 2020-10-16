@@ -1,31 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
     useRouteMatch,
-    useParams
 } from 'react-router-dom';
 
-function Internship({ internship, deleteInternship, updateInternship }) {
+function Internship({ internship, deleteInternship }) {
     const handleDelete = () => {
         deleteInternship(internship);
     };
-    const handleUpdate = () => {
-        updateInternship(internship);
-    };
 
-    let { path, url } = useRouteMatch();
+    let { url } = useRouteMatch();
 
     return (
         <Card className="my-3">
             <Card.Body>
                 <Card.Title>{internship.title}</Card.Title>
                 <Card.Text>{internship.description}</Card.Text>
-                <Card.Link href={`${url}/${internship.id}`}>Meer informatie</Card.Link>
+                <Card.Link href={`${url}/${internship.id}/details`}>Meer informatie</Card.Link>
             </Card.Body>
             <Card.Footer>
                 <Link to={`${url}/${internship.id}/update`}>

@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+    useParams
+} from 'react-router-dom';
 
 function InternshipDetails({ getInternship }) {
-
+    let { id } = useParams();
+    const internship = getInternship(id);
+console.log(internship);
     return (
         <div className="col-md-6">
-            <h2>{getInternship.title}</h2>
-            <p>{getInternship.description}</p>
+            <h2>{internship.title}</h2>
+            <p>{internship.description}</p>
         </div>
     )
 }

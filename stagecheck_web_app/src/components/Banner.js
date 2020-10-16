@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.png';
 import { Navbar, Nav, Form, FormControl, Button, Dropdown, NavDropdown, DropdownButton } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from 'react-router-dom';
 
 function Banner() {
     return (

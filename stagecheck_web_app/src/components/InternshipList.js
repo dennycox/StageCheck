@@ -4,12 +4,10 @@ import Internship from './Internship';
 import AddInternshipForm from './AddInternshipForm';
 import UpdateInternshipForm from './UpdateInternshipForm';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
     useRouteMatch,
-    useParams
 } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import InternshipDetails from './InternshipDetails';
@@ -97,7 +95,7 @@ function InternshipList() {
                                 <Button variant="primary">Stage toevoegen</Button>
                             </Link>
                             {internshipList.map(internship => (
-                                <Internship key={internship.id} internship={internship} deleteInternship={deleteInternship} updateInternship={updateInternship}/>
+                                <Internship key={internship.id} internship={internship} deleteInternship={deleteInternship} />
                             ))}
                         </Route>
                     </Switch>
