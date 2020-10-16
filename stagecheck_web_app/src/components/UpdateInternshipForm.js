@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
 import {
   useParams
 } from 'react-router-dom';
 
-function UpdateInternshipForm({ updateInternship, getInternship }) {
-  let { id } = useParams();
+const InternshipsUrl = "https://localhost:44330/api/Internships/";
 
-  const internship = getInternship(id);
+function UpdateInternshipForm() {
+  var { id } = useParams();
 
-  const [title, setTitle] = useState(internship.title);
-  const [description, setDescription] = useState(internship.description);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    axios.get(InternshipsUrl + id).then(res => {
+      const internship = res.data;
+      setTitle(internship.title);
+      setDescription(internship.description);
+    })
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +30,7 @@ function UpdateInternshipForm({ updateInternship, getInternship }) {
       description: description,
     };
 
-    updateInternship(internship);
+    axios.put(InternshipsUrl + id, internship);
 
     setTitle("");
     setDescription("");
@@ -33,12 +42,12 @@ function UpdateInternshipForm({ updateInternship, getInternship }) {
         <h2>Stage wijzigen</h2>
         <Form.Group>
           <Form.Label>Titel</Form.Label>
-          <Form.Control type="text" placeholder="Voer titel in"
+          <Form.Control type="text" placeholder="Voer titel in" value={title}
             onChange={(e) => setTitle(e.target.value)} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Beschrijving</Form.Label>
-          <Form.Control as="textarea" rows={3} placeholder="Voer beschrijving in"
+          <Form.Control as="textarea" rows={3} placeholder="Voer beschrijving in" value={description}
             onChange={(e) => setDescription(e.target.value)} />
         </Form.Group>
         <Button variant="primary" type="submit">Sla wijzigingen op</Button>

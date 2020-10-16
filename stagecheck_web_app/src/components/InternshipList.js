@@ -24,15 +24,12 @@ function InternshipList() {
         });
     }, []);
 
-    const getInternship = async (id) => {
-        var internship;
-        
-        await axios.get(InternshipsUrl + id).then((res) => {
-            internship = res.data;
-        });
-        
-        return internship;
-    };
+    // const getInternship = (id) => {
+    //     var internship = internshipList.find(x => x.id === id);
+    //     console.log(internship);
+    //     console.log(internshipList);
+    //     return internship;      
+    // };
 
     const addInternship = (internship) => {
         axios.post(InternshipsUrl, internship).then((res) => {
@@ -51,15 +48,15 @@ function InternshipList() {
         });
     };
 
-    const updateInternship = (internship) => {
-        const id = internship.id;
+    // const updateInternship = (internship) => {
+    //     const id = internship.id;
 
-        axios.put(InternshipsUrl + id, internship).then((res) => {
-            const updatedInternship = res.data;
-            const newInternshipList = [...internshipList, updatedInternship];
-            setInternshipList(newInternshipList);
-        });
-    };
+    //     axios.put(InternshipsUrl + id, internship).then((res) => {
+    //         const updatedInternship = res.data;
+    //         const newInternshipList = [...internshipList, updatedInternship];
+    //         setInternshipList(newInternshipList);
+    //     });
+    // };
 
     let { path, url } = useRouteMatch();
 
@@ -80,14 +77,14 @@ function InternshipList() {
                             <Link to={`${url}`}>
                                 <Button variant="outline-primary">Terug</Button>
                             </Link>
-                            <UpdateInternshipForm updateInternship={updateInternship} getInternship={getInternship} />
+                            <UpdateInternshipForm />
                         </Route>
                         {/* Details */}
                         <Route path={`${path}/:id/details`}>
                             <Link to={`${url}`}>
                                 <Button variant="outline-primary">Terug</Button>
                             </Link>
-                            <InternshipDetails getInternship={getInternship} />
+                            <InternshipDetails />
                         </Route>
                         {/* Internships */}
                         <Route path={`${path}`}>
