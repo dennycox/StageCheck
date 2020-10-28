@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InternshipService from '../services/InternshipService';
 
@@ -36,7 +36,7 @@ const AddInternshipForm = () => {
   };
 
   return (
-    <div className="col-md-6">
+    <Container>
       <Link to={"/internships"}>
         <Button variant="primary">Terug</Button>
       </Link>
@@ -67,7 +67,7 @@ const AddInternshipForm = () => {
         </Form.Group>
         <Button variant="primary" onClick={saveInternship}>Voeg stage toe</Button>
       </Form>
-    </div>
+    </Container>
   );
 }
 

@@ -1,10 +1,11 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 function Home() {
     return (
-        <div className="col-md-6">
+        <Container>
             <h3>Vind je ideale stage!</h3>
-        </div>
+        </Container>
     )
 }
 

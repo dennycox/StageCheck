@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import InternshipService from '../services/InternshipService';
 
 const UpdateInternshipForm = (props) => {
@@ -43,7 +43,7 @@ const UpdateInternshipForm = (props) => {
   };
 
   return (
-    <div className="col-md-6">
+    <Container>
       <Link to={"/internships"}>
         <Button variant="primary">Terug</Button>
       </Link>
@@ -75,7 +75,7 @@ const UpdateInternshipForm = (props) => {
         <Button variant="primary" onClick={updateInternship}>Sla wijzigingen op</Button>
         <p>{message}</p>
       </Form>
-    </div>
+    </Container>
   );
 }
 

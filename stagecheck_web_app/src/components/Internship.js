@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InternshipService from '../services/InternshipService';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,7 +37,7 @@ const Internship = props => {
     };
 
     return (
-        <div className="col-md-6">
+        <Container>
             <Link to={"/internships"}>
                 <Button variant="primary">Terug</Button>
             </Link>
@@ -46,10 +46,8 @@ const Internship = props => {
             <Link to={"/update/" + currentInternship.id}>
                 <Button variant="primary">Wijzig</Button>
             </Link>
-            <Button onClick={deleteInternship}>
-                Verwijderen
-        </Button>
-        </div>
+            <Button onClick={deleteInternship}>Verwijderen</Button>
+        </Container>
     )
 }
 
