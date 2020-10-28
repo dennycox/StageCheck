@@ -37,7 +37,10 @@ const Internship = props => {
     };
 
     return (
-        <div>
+        <div className="col-md-6">
+            <Link to={"/internships"}>
+                <Button variant="primary">Terug</Button>
+            </Link>
             <h3>{currentInternship.title}</h3>
             <p>{currentInternship.description}</p>
             <Link to={"/update/" + currentInternship.id}>

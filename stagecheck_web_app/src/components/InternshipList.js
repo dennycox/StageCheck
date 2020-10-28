@@ -23,7 +23,7 @@ const InternshipList = () => {
     return (
         <div>
             <Link to={"/add"}>
-                <Button variant="primary">Toevoegen</Button>
+                <Button variant="primary">Stage toevoegen</Button>
             </Link>
             {internships && internships.map((internship) => (
                 <div key={internship.id}>

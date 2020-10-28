@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import InternshipService from '../services/InternshipService';
 
@@ -31,27 +32,10 @@ const UpdateInternshipForm = (props) => {
     setCurrentInternship({ ...currentInternship, [name]: value });
   };
 
-  const updatePublished = (status) => {
-    var data = {
-      id: currentInternship.id,
-      title: currentInternship.title,
-      description: currentInternship.description,
-    };
-
-    InternshipService.update(currentInternship.id, data)
-      .then(response => {
-        setCurrentInternship({ ...currentInternship, published: status });
-        setMessage("update successful");
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
   const updateInternship = () => {
     InternshipService.update(currentInternship.id, currentInternship)
       .then(response => {
-        setMessage("De stage is bijgewerkt!");
+        setMessage("De wijzigingen zijn opgeslagen!");
       })
       .catch(e => {
         console.log(e);
@@ -60,6 +44,9 @@ const UpdateInternshipForm = (props) => {
 
   return (
     <div className="col-md-6">
+      <Link to={"/internships"}>
+        <Button variant="primary">Terug</Button>
+      </Link>
       <Form>
         <h2>Stage wijzigen</h2>
         <Form.Group>
@@ -86,6 +73,7 @@ const UpdateInternshipForm = (props) => {
           />
         </Form.Group>
         <Button variant="primary" onClick={updateInternship}>Sla wijzigingen op</Button>
+        <p>{message}</p>
       </Form>
     </div>
   );

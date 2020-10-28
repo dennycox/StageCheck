@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import InternshipService from '../services/InternshipService';
 
 const AddInternshipForm = () => {
@@ -36,6 +37,9 @@ const AddInternshipForm = () => {
 
   return (
     <div className="col-md-6">
+      <Link to={"/internships"}>
+        <Button variant="primary">Terug</Button>
+      </Link>
       <Form>
         <h2>Stage toevoegen</h2>
         <Form.Group>
