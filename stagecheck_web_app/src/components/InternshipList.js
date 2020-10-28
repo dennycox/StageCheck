@@ -25,17 +25,17 @@ const InternshipList = () => {
             <Link to={"/add"}>
                 <Button variant="primary">Toevoegen</Button>
             </Link>
-            <ul>
-                {internships && internships.map((internship) => (
+            {internships && internships.map((internship) => (
+                <div key={internship.id}>
                     <Card className="my-3">
                         <Card.Body>
                             <Card.Title>{internship.title}</Card.Title>
                             <Card.Text>{internship.description}</Card.Text>
-                            <Link to={"/internships/" + internship.id}>Meer informatie</Link>
+                            <Link to={"/details/" + internship.id}>Meer informatie</Link>
                         </Card.Body>
                     </Card>
-                ))}
-            </ul>
+                </div>
+            ))}
         </div>
     )
 }

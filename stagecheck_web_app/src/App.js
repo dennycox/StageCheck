@@ -19,7 +19,7 @@ function App() {
         <Banner />
         <Route exact path="/" component={Home} />
         <Route path="/internships" component={InternshipList} />
-        <Route path="/internships/:id" component={Internship} />
+        <Route path="/details/:id" component={Internship} />
         <Route path="/add" component={AddInternshipForm} />
         <Route path="/update/:id" component={UpdateInternshipForm} />
       </Router>
