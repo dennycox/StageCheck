@@ -31,7 +31,7 @@ const InternshipList = () => {
                         <Card.Body>
                             <Card.Title>{internship.title}</Card.Title>
                             <Card.Text>{internship.description}</Card.Text>
-                            <Card.Link to={"/internships/" + internship.id}>Meer informatie</Card.Link>
+                            <Link to={"/internships/" + internship.id}>Meer informatie</Link>
                         </Card.Body>
                     </Card>
                 ))}
