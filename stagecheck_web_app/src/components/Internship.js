@@ -1,32 +1,52 @@
-import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import InternshipService from '../services/InternshipService';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    Link,
-    useRouteMatch,
-} from 'react-router-dom';
 
-function Internship({ internship, deleteInternship }) {
-    const handleDelete = () => {
-        deleteInternship(internship);
+const Internship = props => {
+    const initialInternshipState = {
+        id: null,
+        title: "",
+        description: "",
+    };
+    const [currentInternship, setCurrentInternship] = useState(initialInternshipState);
+
+    const getInternship = id => {
+        InternshipService.get(id)
+            .then(response => {
+                setCurrentInternship(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
     };
 
-    let { url } = useRouteMatch();
+    useEffect(() => {
+        getInternship(props.match.params.id);
+    }, [props.match.params.id]);
+
+    const deleteInternship = () => {
+        InternshipService.remove(currentInternship.id)
+            .then(response => {
+                props.history.push("/internships");
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
 
     return (
-        <Card className="my-3">
-            <Card.Body>
-                <Card.Title>{internship.title}</Card.Title>
-                <Card.Text>{internship.description}</Card.Text>
-                <Card.Link href={`${url}/${internship.id}/details`}>Meer informatie</Card.Link>
-            </Card.Body>
-            <Card.Footer>
-                <Link to={`${url}/${internship.id}/update`}>
-                    <Button variant="primary">Wijzig</Button>
-                </Link>            
-                <Button onClick={handleDelete}>Verwijderen</Button>
-            </Card.Footer>
-        </Card>
+        <div>
+            <h3>{currentInternship.title}</h3>
+            <p>{currentInternship.description}</p>
+            <Link to={"/update/" + currentInternship.id}>
+                <Button variant="primary">Wijzig</Button>
+            </Link>
+            <Button onClick={deleteInternship}>
+                Verwijderen
+        </Button>
+        </div>
     )
 }
 

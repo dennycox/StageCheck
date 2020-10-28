@@ -39,7 +39,7 @@ function Banner() {
                         <Dropdown.Item href="#action/3.7">25 km</Dropdown.Item>
                     </DropdownButton>
                     <Button variant="light">Zoek</Button>
-                    <Nav.Link href="/stages">Toon alle stages</Nav.Link>
+                    <Nav.Link to={"/internships"}>Toon alle stages</Nav.Link>
                 </Nav>
                 <Nav>
                     <NavDropdown title="Gebruikersnaam" id="basic-nav-dropdown">
