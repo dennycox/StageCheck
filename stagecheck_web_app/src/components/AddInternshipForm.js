@@ -42,19 +42,23 @@ const AddInternshipForm = () => {
           <Form.Label>Titel</Form.Label>
           <Form.Control
             type="text"
+            id="title"
             placeholder="Voer titel in"
             value={internship.title}
             onChange={handleInputChange}
+            name="title"
           />
         </Form.Group>
         <Form.Group>
           <Form.Label>Beschrijving</Form.Label>
           <Form.Control
             as="textarea"
+            id="description"
             rows={3}
             placeholder="Voer beschrijving in"
             value={internship.description}
             onChange={handleInputChange}
+            name="description"
           />
         </Form.Group>
         <Button variant="primary" onClick={saveInternship}>Voeg stage toe</Button>

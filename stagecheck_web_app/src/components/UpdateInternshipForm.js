@@ -66,25 +66,29 @@ const UpdateInternshipForm = (props) => {
           <Form.Label>Titel</Form.Label>
           <Form.Control
             type="text"
+            id="title"
             placeholder="Voer titel in"
             value={currentInternship.title}
             onChange={handleInputChange}
+            name="title"
           />
         </Form.Group>
         <Form.Group>
           <Form.Label>Beschrijving</Form.Label>
           <Form.Control
             as="textarea"
+            id="description"
             rows={3}
             placeholder="Voer beschrijving in"
             value={currentInternship.description}
             onChange={handleInputChange}
+            name="description"
           />
         </Form.Group>
         <Button variant="primary" onClick={updateInternship}>Sla wijzigingen op</Button>
       </Form>
     </div>
-  )
+  );
 }
 
 export default UpdateInternshipForm;
