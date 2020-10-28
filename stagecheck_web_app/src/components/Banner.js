@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from './logo.png';
 import { Navbar, Nav, Form, FormControl, Button, Dropdown, NavDropdown, DropdownButton } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,7 +40,9 @@ function Banner() {
                         <Dropdown.Item href="#action/3.7">25 km</Dropdown.Item>
                     </DropdownButton>
                     <Button variant="light">Zoek</Button>
-                    <Nav.Link to={"/internships"}>Toon alle stages</Nav.Link>
+                    <Link to={"/internships"}>
+                        <Button variant="primary">Alle stages</Button>
+                    </Link>
                 </Nav>
                 <Nav>
                     <NavDropdown title="Gebruikersnaam" id="basic-nav-dropdown">
