@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Microsoft.Extensions.Logging;
+using FluentAssertions;
 
 namespace StageCheck_API_Test
 {
