@@ -21,7 +21,7 @@ const InternshipList = () => {
     };
 
     return (
-        <Container>
+        <Container className="pt-3">
             <Link to={"/add"}>
                 <Button variant="primary">Stage toevoegen</Button>
             </Link>

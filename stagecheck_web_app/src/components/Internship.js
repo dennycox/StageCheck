@@ -37,7 +37,7 @@ const Internship = props => {
     };
 
     return (
-        <Container>
+        <Container className="pt-3">
             <Link to={"/internships"}>
                 <Button variant="primary">Terug</Button>
             </Link>
