@@ -1,16 +1,26 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
+using Newtonsoft.Json;
+using StageCheck_API.Models;
+using StageCheck_API.Data;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+using Microsoft.Extensions.Logging;
 
 namespace StageCheck_API_Test
 {
-    class InternshipControllerTest : IClassFixture<CustomWebApplicationFactory<Core_API.Startup>>
+    public class InternshipControllerTest : IClassFixture<CustomWebApplicationFactory<StageCheck_API.Startup>>
     {
         private readonly HttpClient _client;
-        private readonly CustomWebApplicationFactory<Core_API.Startup> _factory;
+        private readonly CustomWebApplicationFactory<StageCheck_API.Startup> _factory;
 
         public InternshipControllerTest(
-        CustomWebApplicationFactory<Core_API.Startup> factory)
+        CustomWebApplicationFactory<StageCheck_API.Startup> factory)
         {
             _factory = factory;
             _client = factory.CreateClient(new WebApplicationFactoryClientOptions
