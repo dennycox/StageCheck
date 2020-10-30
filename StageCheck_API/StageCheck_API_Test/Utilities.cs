@@ -10,7 +10,7 @@ namespace StageCheck_API_Test
     {
         public static void InitializeDbForTests(StageCheckContext db)
         {
-            db.Internships.AddRange(GetSeedingMessages());
+            db.Internships.AddRange(GetSeedingInternships());
 
             db.SaveChanges();
         }
@@ -20,7 +20,7 @@ namespace StageCheck_API_Test
             db.Internships.RemoveRange(db.Internships);
             InitializeDbForTests(db);
         }
-        public static List<Internship> GetSeedingMessages()
+        public static List<Internship> GetSeedingInternships()
         {
             return new List<Internship>()
             {
