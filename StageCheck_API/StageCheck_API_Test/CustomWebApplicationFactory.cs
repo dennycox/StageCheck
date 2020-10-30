@@ -20,11 +20,14 @@ namespace StageCheck_API_Test
                     d => d.ServiceType ==
                         typeof(DbContextOptions<StageCheckContext>));
 
-                services.Remove(descriptor);
-
-                services.AddDbContext<StageCheckContext>(options =>
+                if (descriptor != null)
                 {
-                    options.UseInMemoryDatabase("InMemoryDbForTesting");
+                    services.Remove(descriptor);
+                }
+
+                services.AddDbContext<StageCheckContext>((options, context) =>
+                {
+                    context.UseInMemoryDatabase("InMemoryDbForTesting");
                 });
 
                 var sp = services.BuildServiceProvider();
