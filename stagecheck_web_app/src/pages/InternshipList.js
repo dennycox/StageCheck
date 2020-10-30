@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InternshipService from '../services/InternshipService';
+import Internship from '../components/Internship';
 
 const InternshipList = () => {
     const [internships, setInternships] = useState([]);
@@ -26,15 +27,7 @@ const InternshipList = () => {
                 <Button variant="primary">Stage toevoegen</Button>
             </Link>
             {internships.map((internship) => (
-                <div key={internship.id}>
-                    <Card className="my-3">
-                        <Card.Body>
-                            <Card.Title>{internship.title}</Card.Title>
-                            <Card.Text>{internship.description}</Card.Text>
-                            <Link to={"/details/" + internship.id}>Meer informatie</Link>
-                        </Card.Body>
-                    </Card>
-                </div>
+                <Internship key={internship.id} internship={internship} />
             ))}
         </Container>
     )
