@@ -5,23 +5,23 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Banner from './components/Banner';
-import Home from './components/Home';
-import InternshipList from './components/InternshipList';
-import Internship from './components/Internship';
-import AddInternshipForm from './components/AddInternshipForm';
-import UpdateInternshipForm from './components/UpdateInternshipForm';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import InternshipList from './pages/InternshipList';
+import InternshipDetails from './pages/InternshipDetails';
+import AddInternship from './pages/AddInternship';
+import UpdateInternship from './pages/UpdateInternship';
 
 function App() {
   return (
     <div>
       <Router>
-        <Banner />
+        <Navbar />
         <Route exact path="/" component={Home} />
         <Route path="/internships" component={InternshipList} />
-        <Route path="/details/:id" component={Internship} />
-        <Route path="/add" component={AddInternshipForm} />
-        <Route path="/update/:id" component={UpdateInternshipForm} />
+        <Route path="/details/:id" component={InternshipDetails} />
+        <Route path="/add" component={AddInternship} />
+        <Route path="/update/:id" component={UpdateInternship} />
       </Router>
     </div>
   );

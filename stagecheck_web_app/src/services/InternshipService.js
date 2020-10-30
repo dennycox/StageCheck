@@ -1,23 +1,23 @@
-import http from "../http-common";
+import Axios from "../axios-common";
 
-const getAll = () => {
-  return http.get("/internships");
+const getAll = async () => {
+  return await Axios.get("/internships");
 };
 
-const get = id => {
-  return http.get(`/internships/${id}`);
+const get = async id => {
+  return await Axios.get(`/internships/${id}`);
 };
 
-const create = data => {
-  return http.post("/internships", data);
+const create = async data => {
+  return await Axios.post("/internships", data);
 };
 
-const update = (id, data) => {
-  return http.put(`/internships/${id}`, data);
+const update = async (id, data) => {
+  return await Axios.put(`/internships/${id}`, data);
 };
 
-const remove = id => {
-  return http.delete(`/internships/${id}`);
+const remove = async id => {
+  return await Axios.delete(`/internships/${id}`);
 };
 
 export default {
@@ -25,5 +25,8 @@ export default {
   get,
   create,
   update,
-  remove
+  remove,
+  headers: {
+    "Content-type": "application/json"
+  }
 };

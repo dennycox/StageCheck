@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Form } from 'react-bootstrap';
 import InternshipService from '../services/InternshipService';
 
-const UpdateInternshipForm = (props) => {
+const UpdateInternship = (props) => {
   const initialInternshipState = {
     id: null,
     title: "",
@@ -79,4 +79,4 @@ const UpdateInternshipForm = (props) => {
   );
 }
 
-export default UpdateInternshipForm;
+export default UpdateInternship;
