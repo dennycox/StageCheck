@@ -49,7 +49,39 @@ namespace StageCheck_API_Test
         [Fact]
         public async Task Get_Retrieve_One_Internship()
         {
-            var response = await _client.GetAsync("api/internships/1");
+            var client = _factory.WithWebHostBuilder(builder =>
+            {
+                builder.ConfigureServices(services =>
+                {
+                    var serviceProvider = services.BuildServiceProvider();
+
+                    using (var scope = serviceProvider.CreateScope())
+                    {
+                        var scopedServices = scope.ServiceProvider;
+                        var db = scopedServices
+                            .GetRequiredService<StageCheckContext>();
+                        var logger = scopedServices
+                            .GetRequiredService<ILogger<StageCheck_API.Startup>>();
+
+                        try
+                        {
+                            Utilities.ReinitializeDbForTests(db);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.LogError(ex, "An error occurred seeding " +
+                                "the database with test messages. Error: {Message}",
+                                ex.Message);
+                        }
+                    }
+                });
+            })
+      .CreateClient(new WebApplicationFactoryClientOptions
+      {
+          AllowAutoRedirect = false
+      });
+
+            var response = await client.GetAsync("api/internships/1");
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
@@ -59,7 +91,7 @@ namespace StageCheck_API_Test
         {
             var response = await _client.GetAsync("api/internships/0");
 
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
         [Fact]
@@ -78,19 +110,6 @@ namespace StageCheck_API_Test
 
         [Fact]
         public async Task Put_Succeed_Internship()
-        {
-            var response = await _client.PutAsync("api/internships/1", new StringContent(JsonConvert.SerializeObject(new Internship()
-            {
-                Id = 1,
-                Title = "Updated internship title",
-                Description = "Updated internship description"
-            }), Encoding.UTF8, "application/json"));
-
-            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
-        }
-
-        [Fact]
-        public async Task Delete_Succeed_Internship()
         {
             var client = _factory.WithWebHostBuilder(builder =>
             {
@@ -124,9 +143,22 @@ namespace StageCheck_API_Test
           AllowAutoRedirect = false
       });
 
-            var response = await client.DeleteAsync("api/internships/1");
+            var response = await client.PutAsync("api/internships/1", new StringContent(JsonConvert.SerializeObject(new Internship()
+            {
+                Id = 1,
+                Title = "Updated internship title",
+                Description = "Updated internship description"
+            }), Encoding.UTF8, "application/json"));
 
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+        }
+
+        [Fact]
+        public async Task Delete_Succeed_Internship()
+        {
+            var response = await _client.DeleteAsync("api/internships/1");
+
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
         }
     }
 }
