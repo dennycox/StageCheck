@@ -1,4 +1,4 @@
-import Axios from "../axios-common";
+import Axios from '../axios-common';
 
 const getAll = async () => {
   return await Axios.get("/internships");
