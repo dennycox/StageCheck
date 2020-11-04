@@ -11,6 +11,8 @@ import InternshipList from './pages/InternshipList';
 import InternshipDetails from './pages/InternshipDetails';
 import AddInternship from './pages/AddInternship';
 import UpdateInternship from './pages/UpdateInternship';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/details/:id" component={InternshipDetails} />
         <Route path="/add" component={AddInternship} />
         <Route path="/update/:id" component={UpdateInternship} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </Router>
     </div>
   );
