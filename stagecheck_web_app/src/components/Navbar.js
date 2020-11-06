@@ -25,7 +25,7 @@ function Banner() {
                         <Dropdown.Item href="#action/1">Alle opleidingen</Dropdown.Item>
                         <Dropdown.Item href="#action/2">ICT</Dropdown.Item>
                         <Dropdown.Item href="#action/3">Bedrijfskunde</Dropdown.Item>
-                        <Dropdown.Item href="#action/4">Verpleegkundige</Dropdown.Item>
+                        <Dropdown.Item href="#action/4">Verpleegkunde</Dropdown.Item>
                     </DropdownButton>
                     <Form inline>
                         <FormControl type="text" placeholder="Plaats of postcode" className="mr-sm-2" />
