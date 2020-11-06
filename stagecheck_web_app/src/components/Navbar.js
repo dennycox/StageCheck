@@ -4,6 +4,7 @@ import logo from '../logo.png';
 import { Navbar, Nav, Form, FormControl, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FilterService from '../services/FilterService';
+import InternshipService from '../services/InternshipService';
 
 const Banner = () => {
     const [studies, setStudies] = useState([]);
@@ -39,9 +40,9 @@ const Banner = () => {
                         <FormControl type="text" placeholder="Vul hier je zoekterm in" className="mr-sm-2" />
                     </Form>
                     <DropdownButton title="Alle opleidingen" id="basic-nav-dropdown" variant="secondary">
-                        <Dropdown.Item href="#action/1">Alle opleidingen</Dropdown.Item>
+                        <Dropdown.Item href="?studyId=0">Alle opleidingen</Dropdown.Item>
                         {studies.map((study) => (
-                            <Dropdown.Item href="#action/">{study.name}</Dropdown.Item>
+                            <Dropdown.Item href={`?studyId=${study.id}`}>{study.name}</Dropdown.Item>
                         ))}
                     </DropdownButton>
                     <Form inline>
@@ -56,7 +57,7 @@ const Banner = () => {
                         <Dropdown.Item href="#action/6">20 km</Dropdown.Item>
                         <Dropdown.Item href="#action/7">25 km</Dropdown.Item>
                     </DropdownButton>
-                    <Button variant="light">Zoek</Button>
+                    <Button variant="light" onClick={InternshipService.getAll}>Zoek</Button>
                     <Link to={"/internships"}>
                         <Button variant="primary">Alle stages</Button>
                     </Link>
