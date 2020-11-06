@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../logo.png';
 import { Navbar, Nav, Form, FormControl, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FilterService from '../services/FilterService';
 
-function Banner() {
+const Banner = () => {
+    const [studies, setStudies] = useState([]);
+
+    useEffect(() => {
+        retrieveStudies();
+    }, []);
+
+    const retrieveStudies = () => {
+        FilterService.getAll()
+            .then(response => {
+                setStudies(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+
     return (
         <Navbar bg="primary" expand="lg">
             <Navbar.Brand href="/">
@@ -23,9 +40,9 @@ function Banner() {
                     </Form>
                     <DropdownButton title="Alle opleidingen" id="basic-nav-dropdown" variant="secondary">
                         <Dropdown.Item href="#action/1">Alle opleidingen</Dropdown.Item>
-                        <Dropdown.Item href="#action/2">ICT</Dropdown.Item>
-                        <Dropdown.Item href="#action/3">Bedrijfskunde</Dropdown.Item>
-                        <Dropdown.Item href="#action/4">Verpleegkunde</Dropdown.Item>
+                        {studies.map((study) => (
+                            <Dropdown.Item href="#action/">{study.name}</Dropdown.Item>
+                        ))}
                     </DropdownButton>
                     <Form inline>
                         <FormControl type="text" placeholder="Plaats of postcode" className="mr-sm-2" />
