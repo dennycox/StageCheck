@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import InternshipService from '../services/InternshipService';
 import Internship from '../components/Internship';
 
-const InternshipList = () => {
-    const [internships, setInternships] = useState([]);
+const InternshipList = ({globalInternships}) => {
+    var [internships, setInternships] = useState({globalInternships});
 
     useEffect(() => {
         retrieveInternships();

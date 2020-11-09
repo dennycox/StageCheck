@@ -1,7 +1,7 @@
 import Axios from '../axios-common';
 
-const getAll = async () => {
-  return await Axios.get("/internships");
+const getAll = async (search) => {
+  return await Axios.get(`/internships?search=${search}`);
 };
 
 const get = async id => {

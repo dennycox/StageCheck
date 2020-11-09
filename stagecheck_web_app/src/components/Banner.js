@@ -6,8 +6,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FilterService from '../services/FilterService';
 import InternshipService from '../services/InternshipService';
 
-const Banner = () => {
+const Banner = ({globalInternships}) => {
     const [studies, setStudies] = useState([]);
+    const [search, setSearch] = useState([]);
+    var [internships, setInternships] = useState({globalInternships});
 
     useEffect(() => {
         retrieveStudies();
@@ -23,6 +25,21 @@ const Banner = () => {
             });
     };
 
+    const handleChangeSearch = event => {
+        const { value } = event.target;
+        setSearch(value);
+      };
+
+    const handleSubmitSearch = event => {
+        InternshipService.getAll(search)
+            .then(response => {
+                setInternships(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+      };
+
     return (
         <Navbar bg="primary" expand="lg">
             <Navbar.Brand href="/">
@@ -36,15 +53,30 @@ const Banner = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Form inline>
-                        <FormControl type="text" placeholder="Vul hier je zoekterm in" className="mr-sm-2" />
+                    <Form inline onSubmit={handleSubmitSearch}>
+                        <FormControl
+                            type="text"
+                            id="search"
+                            placeholder="Vul hier je zoekterm in"
+                            className="mr-sm-2"
+                            onChange={handleChangeSearch}
+                            name="search"
+                        />
                     </Form>
-                    <DropdownButton title="Alle opleidingen" id="basic-nav-dropdown" variant="secondary">
+                    {/* <DropdownButton title="Alle opleidingen" id="basic-nav-dropdown" variant="secondary">
                         <Dropdown.Item href="?studyId=0">Alle opleidingen</Dropdown.Item>
                         {studies.map((study) => (
                             <Dropdown.Item href={`?studyId=${study.id}`}>{study.name}</Dropdown.Item>
                         ))}
-                    </DropdownButton>
+                    </DropdownButton> */}
+                    <Form inline>
+                        <FormControl as="select">
+                            <option>Alle opleidingen</option>
+                            {studies.map((study) => (
+                                <option>{study.name}</option>
+                            ))}
+                        </FormControl>
+                    </Form>
                     <Form inline>
                         <FormControl type="text" placeholder="Plaats of postcode" className="mr-sm-2" />
                     </Form>
@@ -57,7 +89,7 @@ const Banner = () => {
                         <Dropdown.Item href="#action/6">20 km</Dropdown.Item>
                         <Dropdown.Item href="#action/7">25 km</Dropdown.Item>
                     </DropdownButton>
-                    <Button variant="light" onClick={InternshipService.getAll}>Zoek</Button>
+                    {/* <Button variant="light" onClick={handleChange}>Zoek</Button> */}
                     <Link to={"/internships"}>
                         <Button variant="primary">Alle stages</Button>
                     </Link>
