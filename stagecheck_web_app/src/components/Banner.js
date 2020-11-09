@@ -9,7 +9,7 @@ import InternshipService from '../services/InternshipService';
 const Banner = ({globalInternships}) => {
     const [studies, setStudies] = useState([]);
     const [search, setSearch] = useState([]);
-    var [internships, setInternships] = useState({globalInternships});
+    const [internships, setInternships] = useState({globalInternships});
 
     useEffect(() => {
         retrieveStudies();

@@ -5,7 +5,7 @@ import InternshipService from '../services/InternshipService';
 import Internship from '../components/Internship';
 
 const InternshipList = ({globalInternships}) => {
-    var [internships, setInternships] = useState({globalInternships});
+    const [internships, setInternships] = useState({globalInternships});
 
     useEffect(() => {
         retrieveInternships();
