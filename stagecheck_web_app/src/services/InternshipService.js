@@ -1,7 +1,11 @@
 import Axios from '../axios-common';
 
-const getAll = async (search) => {
+const getAllSearch = async (search) => {
   return await Axios.get(`/internships?search=${search}`);
+};
+
+const getAll = async () => {
+  return await Axios.get(`/internships/`);
 };
 
 const get = async id => {
@@ -21,6 +25,7 @@ const remove = async id => {
 };
 
 export default {
+  getAllSearch,
   getAll,
   get,
   create,

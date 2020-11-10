@@ -37,7 +37,7 @@ namespace StageCheck_API.Controllers
             {
                 query = query.Where(x => x.Title.Contains(search));
             }
-
+            
             return await query.Select(x => InternshipToDTO(x)).ToListAsync();
         }
 

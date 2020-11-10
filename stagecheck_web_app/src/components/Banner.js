@@ -6,10 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FilterService from '../services/FilterService';
 import InternshipService from '../services/InternshipService';
 
-const Banner = ({globalInternships}) => {
+const Banner = ({SearchInternships}) => {
     const [studies, setStudies] = useState([]);
     const [search, setSearch] = useState([]);
-    const [internships, setInternships] = useState({globalInternships});
 
     useEffect(() => {
         retrieveStudies();
@@ -31,13 +30,7 @@ const Banner = ({globalInternships}) => {
       };
 
     const handleSubmitSearch = event => {
-        InternshipService.getAll(search)
-            .then(response => {
-                setInternships(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
+        SearchInternships(search);
       };
 
     return (
