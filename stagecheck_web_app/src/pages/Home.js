@@ -1,13 +1,15 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import Banner from '../components/Banner';
+import { Container, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Home() {
     return (
         <div>
-            <Banner />
             <Container className="pt-3">
                 <h3>Vind je ideale stage!</h3>
+                <Link to={"/internships"}>
+                    <Button variant="primary">Klik hier om te beginnen met zoeken</Button>
+                </Link>
             </Container>
         </div>
     )

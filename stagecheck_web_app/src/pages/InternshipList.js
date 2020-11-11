@@ -3,7 +3,7 @@ import { Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InternshipService from '../services/InternshipService';
 import Internship from '../components/Internship';
-import Banner from '../components/Banner';
+import FilterBar from '../components/FilterBar';
 
 const InternshipList = () => {
     const [internships, setInternships] = useState([]);
@@ -12,18 +12,8 @@ const InternshipList = () => {
         retrieveInternships();
     }, []);
 
-    const retrieveInternships = () => {
-        InternshipService.getAll()
-            .then(response => {
-                setInternships(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    };
-
-    const retrieveInternshipsBySearch = (search) => {
-        InternshipService.getAllSearch(search)
+    const retrieveInternships = (search, studyId) => {
+        InternshipService.getAll(search, studyId)
             .then(response => {
                 setInternships(response.data);
             })
@@ -34,7 +24,7 @@ const InternshipList = () => {
 
     return (
         <div>
-            <Banner SearchInternships={retrieveInternshipsBySearch} />
+            <FilterBar FilterInternships={retrieveInternships} />
             <Container className="pt-3">
                 <Link to={"/add"}>
                     <Button variant="primary">Stage toevoegen</Button>

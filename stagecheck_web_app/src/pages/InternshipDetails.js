@@ -37,17 +37,19 @@ const InternshipDetails = props => {
     };
 
     return (
-        <Container className="pt-3">
-            <Link to={"/internships"}>
-                <Button variant="primary">Terug</Button>
-            </Link>
-            <h3>{currentInternship.title}</h3>
-            <p>{currentInternship.description}</p>
-            <Link to={"/update/" + currentInternship.id}>
-                <Button variant="primary">Wijzig</Button>
-            </Link>
-            <Button onClick={deleteInternship}>Verwijderen</Button>
-        </Container>
+        <div>
+            <Container className="pt-3">
+                <Link to={"/internships"}>
+                    <Button variant="primary">Terug</Button>
+                </Link>
+                <h3>{currentInternship.title}</h3>
+                <p>{currentInternship.description}</p>
+                <Link to={"/update/" + currentInternship.id}>
+                    <Button variant="primary">Wijzig</Button>
+                </Link>
+                <Button onClick={deleteInternship}>Verwijderen</Button>
+            </Container>
+        </div>
     )
 }
 
