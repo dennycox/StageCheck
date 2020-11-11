@@ -16,7 +16,7 @@ const Banner = () => {
                     alt="Stage Check logo"
                 />
             </Navbar.Brand>
-            <Nav>
+            <Nav className="ml-auto">
                 <Link to={"/login"}>
                     <Button variant="primary">Inloggen</Button>
                 </Link>
