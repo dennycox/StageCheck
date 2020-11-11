@@ -60,7 +60,7 @@ const FilterBar = ({ FilterInternships }) => {
                         >
                             <option value={0}>Alle opleidingen</option>
                             {studies.map((study) => (
-                                <option value={study.id}>{study.name}</option>
+                                <option key={study.id} value={study.id}>{study.name}</option>
                             ))}
                         </FormControl>
                     </Form>
