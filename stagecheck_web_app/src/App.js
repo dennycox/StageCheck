@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
 
-import Banner from './components/Banner';
 import Home from './pages/Home';
 import InternshipList from './pages/InternshipList';
 import InternshipDetails from './pages/InternshipDetails';

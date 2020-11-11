@@ -4,9 +4,8 @@ import logo from '../logo.png';
 import { Navbar, Nav, Form, FormControl, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FilterService from '../services/FilterService';
-import InternshipService from '../services/InternshipService';
 
-const Banner = ({SearchInternships}) => {
+const Banner = ({ SearchInternships }) => {
     const [studies, setStudies] = useState([]);
     const [search, setSearch] = useState([]);
 
@@ -27,11 +26,11 @@ const Banner = ({SearchInternships}) => {
     const handleChangeSearch = event => {
         const { value } = event.target;
         setSearch(value);
-      };
+    };
 
     const handleSubmitSearch = event => {
         SearchInternships(search);
-      };
+    };
 
     return (
         <Navbar bg="primary" expand="lg">
@@ -46,7 +45,7 @@ const Banner = ({SearchInternships}) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Form inline onSubmit={handleSubmitSearch}>
+                    <Form inline>
                         <FormControl
                             type="text"
                             id="search"
@@ -82,7 +81,9 @@ const Banner = ({SearchInternships}) => {
                         <Dropdown.Item href="#action/6">20 km</Dropdown.Item>
                         <Dropdown.Item href="#action/7">25 km</Dropdown.Item>
                     </DropdownButton>
-                    {/* <Button variant="light" onClick={handleChange}>Zoek</Button> */}
+                    <Link to={"/internships"}>
+                        <Button variant="light" onClick={handleSubmitSearch}>Zoek stage</Button>
+                    </Link>
                     <Link to={"/internships"}>
                         <Button variant="primary">Alle stages</Button>
                     </Link>
