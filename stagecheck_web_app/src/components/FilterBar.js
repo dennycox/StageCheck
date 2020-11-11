@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, Nav, Form, FormControl, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FilterService from '../services/FilterService';
+import StudyService from '../services/StudyService';
 
 const FilterBar = ({ FilterInternships }) => {
     const [studies, setStudies] = useState([]);
@@ -14,7 +13,7 @@ const FilterBar = ({ FilterInternships }) => {
     }, []);
 
     const retrieveStudies = () => {
-        FilterService.getAll()
+        StudyService.getAll()
             .then(response => {
                 setStudies(response.data);
             })
@@ -31,7 +30,6 @@ const FilterBar = ({ FilterInternships }) => {
     const handleChangeStudyId = event => {
         const { value } = event.target;
         setStudyId(value);
-        console.log(value);
     };
 
     const handleSubmitSearch = event => {
@@ -69,18 +67,18 @@ const FilterBar = ({ FilterInternships }) => {
                     <Form inline>
                         <FormControl type="text" placeholder="Plaats of postcode" className="mr-sm-2" />
                     </Form>
-                    <DropdownButton title="Alle afstanden" id="basic-nav-dropdown" variant="secondary">
-                        <Dropdown.Item href="#action/1">Alle afstanden</Dropdown.Item>
-                        <Dropdown.Item href="#action/2">3 km</Dropdown.Item>
-                        <Dropdown.Item href="#action/3">5 km</Dropdown.Item>
-                        <Dropdown.Item href="#action/4">10 km</Dropdown.Item>
-                        <Dropdown.Item href="#action/5">15 km</Dropdown.Item>
-                        <Dropdown.Item href="#action/6">20 km</Dropdown.Item>
-                        <Dropdown.Item href="#action/7">25 km</Dropdown.Item>
-                    </DropdownButton>
-                    <Link to={"/internships"}>
-                        <Button variant="light" onClick={handleSubmitSearch}>Zoek stage</Button>
-                    </Link>
+                    <Form inline>
+                        <FormControl as="select">
+                            <option>Alle afstanden</option>
+                            <option>3 km</option>
+                            <option>5 km</option>
+                            <option>10 km</option>
+                            <option>15 km</option>
+                            <option>20 km</option>
+                            <option>25 km</option>
+                        </FormControl>
+                    </Form>
+                    <Button variant="light" onClick={handleSubmitSearch}>Zoek stage</Button>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
