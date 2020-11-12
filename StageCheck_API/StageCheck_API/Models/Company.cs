@@ -18,5 +18,7 @@ namespace StageCheck_API.Models
         public string City { get; set; }
         public string WebSite { get; set; }
         public int PhoneNumber { get; set; }
+
+        public ICollection<Internship> Internships { get; set; }
     }
 }

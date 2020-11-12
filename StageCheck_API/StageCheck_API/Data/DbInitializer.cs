@@ -22,21 +22,25 @@ namespace StageCheck_API.Data
                 new Internship{Title="Mechatronica hbo stage 2e jaars",
                     Description="Uitdagende stageopdracht",
                     StudyId=4,
+                    CompanyId=1,
                 },
 
                 new Internship{Title="ICT hbo afstudeerstage",
                     Description="Hele leuke en uitdagende afstudeeropdracht",
                     StudyId=3,
+                    CompanyId=1,
                 },
 
                 new Internship{Title="Bedrijfskunde hbo 2e jaars stage",
                     Description="2 stageplekken vrij",
                     StudyId=2,
+                    CompanyId=1,
                 },
 
                 new Internship{Title="Applied Science hbo afstudeerstage",
                     Description="3 Uitdagende stageplek beschikbaar",
                     StudyId=1,
+                    CompanyId=1,
                 },
             };
             foreach (Internship i in internships)
@@ -64,6 +68,29 @@ namespace StageCheck_API.Data
             foreach (Study s in studies)
             {
                 context.Studies.Add(s);
+            }
+
+            context.SaveChanges();
+
+            if (context.Companies.Any())
+            {
+                return;
+            }
+
+            var companies = new Company[]
+            {
+                new Company{Name="Rockstars IT",
+                    StreetName="Lekkerbeetjesstraat",
+                    HouseNumber=8,
+                    HouseNumberAddition=null,
+                    ZipCode="5211AL",
+                    City="'s-Hertogenbisch",
+                    WebSite="www.teamrockstars.nl",
+                    PhoneNumber=0736157777},
+            };
+            foreach (Company c in companies)
+            {
+                context.Companies.Add(c);
             }
 
             context.SaveChanges();
