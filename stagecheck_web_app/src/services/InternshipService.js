@@ -1,6 +1,6 @@
 import Axios from '../axios-common';
 
-const getAll = async (search, studyId) => {
+const getAll = async (search = '', studyId = '') => {
   return await Axios.get(`/internships?search=${search}&studyId=${studyId}`);
 };
 

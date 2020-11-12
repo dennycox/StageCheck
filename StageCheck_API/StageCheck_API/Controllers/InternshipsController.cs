@@ -24,18 +24,18 @@ namespace StageCheck_API.Controllers
 
         // GET: api/Internships
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InternshipDTO>>> GetInternships(int studyId = 0, string search = null)
+        public async Task<ActionResult<IEnumerable<InternshipDTO>>> GetInternships(int? studyId = null, string search = null)
         {
             IQueryable<Internship> query = _context.Internships;
 
-            if (studyId != 0)
+            if (studyId != null && studyId != 0)
             {
                 query = query.Where(x => x.StudyId == studyId);
             }
 
             if (!string.IsNullOrWhiteSpace(search))
             {
-                query = query.Where(x => x.Title.Contains(search));
+                query = query.Where(x => x.Title.Contains(search.Trim()));
             }
             
             return await query.Select(x => InternshipToDTO(x)).ToListAsync();
