@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StageCheck_API.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace StageCheck_API.DTO
         public string City { get; set; }
         public string WebSite { get; set; }
         public int PhoneNumber { get; set; }
+
+        public ICollection<Internship> Internships { get; set; }
     }
 }

@@ -52,7 +52,7 @@ namespace StageCheck_API.Controllers
                 return NotFound();
             }
 
-            return InternshipToDTO(internship);
+            return await InternshipToDTO(internship);
         }
 
         // PUT: api/Internships/5
@@ -124,12 +124,16 @@ namespace StageCheck_API.Controllers
         private bool InternshipExists(int id) =>
             _context.Internships.Any(e => e.Id == id);
 
-        private static InternshipDTO InternshipToDTO(Internship internship) =>
+        private async Task<ActionResult<InternshipDTO>> InternshipToDTO(Internship internship) =>
             new InternshipDTO
             {
                 Id = internship.Id,
                 Title = internship.Title,
                 Description = internship.Description,
+                StudyId = internship.StudyId,
+                Study = await _context.Studies.FirstOrDefaultAsync(s => s.Id == internship.StudyId),
+                CompanyId = internship.CompanyId,
+                Company = await _context.Companies.FirstOrDefaultAsync(c => c.Id == internship.CompanyId),
             };
     }
 }
