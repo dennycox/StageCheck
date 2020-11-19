@@ -2,10 +2,10 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Internship = ({ internship }) => {
+const Internship = ({ internship, ...props }) => {
 
     return (
-        <Card className="my-3">
+        <Card className="my-3" data-testid="card" {...props}>
             <Card.Body>
                 <Card.Title>{internship.title}</Card.Title>
                 <Card.Text>{internship.description}</Card.Text>

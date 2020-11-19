@@ -2,33 +2,36 @@ import axios from "axios";
 import InternshipService from "../services/InternshipService";
 import { render, cleanup, waitFor, screen } from "@testing-library/react";
 import App from "../App";
+import InternshipList from "../pages/InternshipList";
 import React from "react";
+import { MemoryRouter } from 'react-router-dom';
 
-jest.mock("axios");
+afterEach(cleanup);
 
 describe("Internship tests", () => {
-  it.skip("Should fetch internships", async () => {
-    const internships = [
-      {
-        id: 1,
-        title: "Test first internship title",
-        description: "Test first internship description",
-      },
-      {
-        id: 2,
-        title: "Test second internship title",
-        description: "Test second internship description",
-      },
-    ];
-    const resp = { data: internships };
-    axios.get.mockResolvedValue(resp);
+  it("Renders internships", () => {
+    const testInternships = [{
+      id: 1,
+      title: "Internship title 1",
+      description: "Internship description 1",
+    },
+    {
+      id: 2,
+      title: "Internship title 2",
+      description: "Internship description 2",
+    }];
+    const { getAllByTestId } = render(<MemoryRouter initialEntries={["/internships"]}><InternshipList internship={testInternships} /></MemoryRouter>);
+    const internshipTitles = getAllByTestId("card").map(t => t.testContent);
 
-    return InternshipService.getAll().then((data) =>
-      expect(data).toEqual(internships)
-    );
+    expect(internshipTitles).toMatchInlineSnapshot(`
+      Array [
+        "Internship title 1",
+        "Internship title 2",
+      ]
+      `);
   });
 
-  it("Should fetch internships", async () => {
+  it("Renders app", () => {
     render(<App />);
     expect(screen).toMatchInlineSnapshot(`
       Object {
