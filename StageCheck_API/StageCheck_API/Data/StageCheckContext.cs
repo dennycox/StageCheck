@@ -16,12 +16,14 @@ namespace StageCheck_API.Data
 
         public DbSet<Internship> Internships { get; set; }
         public DbSet<Study> Studies { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Internship>().ToTable("Internship");
             modelBuilder.Entity<Study>().ToTable("Studies");
+            modelBuilder.Entity<Company>().ToTable("Companies");
         }
     }
 }

@@ -130,6 +130,8 @@ namespace StageCheck_API.Controllers
                 Id = internship.Id,
                 Title = internship.Title,
                 Description = internship.Description,
+                StudyId = internship.StudyId,
+                CompanyId = internship.CompanyId,
             };
     }
 }
