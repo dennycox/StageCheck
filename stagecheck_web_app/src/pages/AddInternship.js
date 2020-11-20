@@ -51,6 +51,7 @@ const AddInternship = () => {
             value={internship.title}
             onChange={handleInputChange}
             name="title"
+            data-testid="add-internship-title-input"
           />
         </Form.Group>
         <Form.Group>
@@ -63,9 +64,10 @@ const AddInternship = () => {
             value={internship.description}
             onChange={handleInputChange}
             name="description"
+            data-testid="add-internship-description-input"
           />
         </Form.Group>
-        <Button variant="primary" onClick={saveInternship}>Voeg stage toe</Button>
+        <Button variant="primary" onClick={saveInternship} data-testid="add-internship-submit">Voeg stage toe</Button>
       </Form>
     </Container>
   );

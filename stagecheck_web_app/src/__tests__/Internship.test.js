@@ -10,7 +10,7 @@ afterEach(cleanup);
 
 jest.mock('axios');
 
-describe("Internship tests", () => {
+describe("Internship list tests", () => {
   it.skip("Renders internships", () => {
     const testInternships = [{
       id: 1,
@@ -33,7 +33,7 @@ describe("Internship tests", () => {
       `);
   });
 
-  it("Should fetch internships", async () => {
+  it.skip("Fetches internships", async () => {
     const internships = [
       {
         id: 1,
