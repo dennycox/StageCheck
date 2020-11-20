@@ -3,12 +3,15 @@ import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import InternshipService from '../services/InternshipService';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Company from '../components/Company';
 
 const InternshipDetails = props => {
     const initialInternshipState = {
         id: null,
         title: "",
         description: "",
+        studyId: null,
+        companyId: null,
     };
     const [currentInternship, setCurrentInternship] = useState(initialInternshipState);
 
@@ -43,12 +46,16 @@ const InternshipDetails = props => {
             </Link>
             <h3>{currentInternship.title}</h3>
             <p>{currentInternship.description}</p>
+            {currentInternship.companyId ? (
+                <Company companyId={currentInternship.companyId} />
+            ) : (<div />)}
             <Link to={"/update/" + currentInternship.id}>
                 <Button variant="primary">Wijzig</Button>
             </Link>
             <Button onClick={deleteInternship}>Verwijderen</Button>
         </Container>
     )
+
 }
 
 export default InternshipDetails;
