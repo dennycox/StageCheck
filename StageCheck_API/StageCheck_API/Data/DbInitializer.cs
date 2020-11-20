@@ -84,7 +84,7 @@ namespace StageCheck_API.Data
                     HouseNumber=8,
                     HouseNumberAddition=null,
                     ZipCode="5211AL",
-                    City="'s-Hertogenbisch",
+                    City="'s-Hertogenbosch",
                     WebSite="www.teamrockstars.nl",
                     PhoneNumber=0736157777},
             };
