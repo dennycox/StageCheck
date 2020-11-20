@@ -23,7 +23,7 @@ const Company = ({ companyId }) => {
         <Card className="my-3">
             <Card.Body>
                 <Card.Title>{company.name}</Card.Title>
-                <Card.Text>{company.city}</Card.Text>
+                <Card.Text>{company.streetName} {company.houseNumber} {company.houseNumberAddition}, {company.zipCode} {company.city}</Card.Text>
                 <Card.Text>{company.webSite}</Card.Text>
                 <Card.Text>{company.phoneNumber}</Card.Text>
             </Card.Body>
