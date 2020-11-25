@@ -18,6 +18,6 @@ namespace StageCheck_API.DTO
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string WebSite { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

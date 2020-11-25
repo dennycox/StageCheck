@@ -83,10 +83,10 @@ namespace StageCheck_API.Data
                     StreetName="Lekkerbeetjesstraat",
                     HouseNumber=8,
                     HouseNumberAddition=null,
-                    ZipCode="5211AL",
+                    ZipCode="5211 AL",
                     City="'s-Hertogenbosch",
                     WebSite="www.teamrockstars.nl",
-                    PhoneNumber=0736157777},
+                    PhoneNumber="073 615 7777"},
             };
             foreach (Company c in companies)
             {
