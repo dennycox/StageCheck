@@ -25,8 +25,8 @@ const Company = ({ companyId }) => {
             <Card.Body>
                 <Card.Title>{company.name}</Card.Title>
                 <Card.Text><MdLocationOn color="red" /> {company.streetName} {company.houseNumber} {company.houseNumberAddition}, {company.zipCode} {company.city}</Card.Text>
-                <Card.Text>{company.webSite}</Card.Text>
-                <Card.Text>{company.phoneNumber}</Card.Text>
+                <Card.Text><a href={`https://${company.webSite}`} target="_blank" rel="noreferrer noopener">{company.webSite}</a></Card.Text>
+                <Card.Text><a href={`tel:${company.phoneNumber}`}>{company.phoneNumber}</a></Card.Text>
             </Card.Body>
         </Card>
     )
