@@ -22,7 +22,7 @@ namespace StageCheck_API.Data
                 new Internship{Title="Mechatronica hbo stage 2e jaars",
                     Description="Uitdagende stageopdracht beschikbaar, indien interesse neem contact op",
                     StudyId=4,
-                    CompanyId=2,
+                    CompanyId=4,
                 },
 
                 new Internship{Title="ICT hbo afstudeerstage",
@@ -40,7 +40,7 @@ namespace StageCheck_API.Data
                 new Internship{Title="Applied Science hbo afstudeerstage",
                     Description="3 Uitdagende stageplek beschikbaar, voor meer informatie neem contact met ons op",
                     StudyId=1,
-                    CompanyId=4,
+                    CompanyId=2,
                 },
 
                 new Internship{Title="hbo software stage",
