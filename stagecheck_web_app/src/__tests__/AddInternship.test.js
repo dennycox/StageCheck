@@ -15,6 +15,11 @@ describe("Add internships test", () => {
     it("Successfully fills in and submits form", () => {
         const mockFn = InternshipService.create.mockImplementation(data => {
             console.log(data);
+            return{data: {
+                id: 1,
+                title: "Test internship title",
+                description: "Test internship description"
+            }};
         });
 
         const { queryByTestId } = render(<MemoryRouter initialEntries={["/add"]}><AddInternship /></MemoryRouter>);

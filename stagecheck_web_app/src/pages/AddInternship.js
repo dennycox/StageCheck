@@ -16,23 +16,18 @@ const AddInternship = () => {
     setInternship({ ...internship, [name]: value });
   };
 
-  const saveInternship = () => {
+  const saveInternship = async () => {
     var data = {
       title: internship.title,
       description: internship.description
     };
 
-    InternshipService.create(data)
-      .then(response => {
-        setInternship({
-          id: response.data.id,
-          title: response.data.title,
-          description: response.data.description
-        });
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    let apiResponse = await InternshipService.create(data)
+    setInternship({
+      id: apiResponse.data.id,
+      title: apiResponse.data.title,
+      description: apiResponse.data.description
+    })
   };
 
   return (

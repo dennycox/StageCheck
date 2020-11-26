@@ -53,7 +53,7 @@ describe("Internship list tests", () => {
     );
   });
 
-  it("Renders app", () => {
+  it.skip("Renders app", () => {
     render(<App />);
     expect(screen).toMatchInlineSnapshot(`
       Object {

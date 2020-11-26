@@ -1,25 +1,23 @@
-import axios from 'axios';
-
-const api = "https://localhost:44330/api";
+import Axios from '../axios-common';
 
 const getAll = async (search = '', studyId = '') => {
-  return await axios.get(api + `/internships?search=${search}&studyId=${studyId}`);
+  return await Axios.get(`/internships?search=${search}&studyId=${studyId}`);
 };
 
 const get = async id => {
-  return await axios.get(api + `/internships/${id}`);
+  return await Axios.get(`/internships/${id}`);
 };
 
 const create = async data => {
-  return await axios.post(api + "/internships", data);
+  return await Axios.post("/internships", data);
 };
 
 const update = async (id, data) => {
-  return await axios.put(api + `/internships/${id}`, data);
+  return await Axios.put(`/internships/${id}`, data);
 };
 
 const remove = async id => {
-  return await axios.delete(api + `/internships/${id}`);
+  return await Axios.delete(`/internships/${id}`);
 };
 
 export default {
