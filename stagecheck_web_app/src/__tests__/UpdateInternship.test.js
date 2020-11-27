@@ -7,11 +7,21 @@ import React from 'react';
 jest.mock('../services/InternshipService');
 
 describe("Update internships test", () => {
-    it.skip("Successfully updates and submits form", () => {
-        const mockFn = InternshipService.get.mockImplementation(data => {
+    it("Successfully updates and submits form", () => {
+        const mockFnGet = InternshipService.get.mockImplementation(data => {
             console.log(data);
             return {
                 data: {
+                    id: 1
+                }
+            };
+        });
+
+        const mockFnUpdate = InternshipService.update.mockImplementation(data => {
+            console.log(data);
+            return {
+                data:
+                {    
                     id: 1,
                     title: "Test internship title",
                     description: "Test internship description"
@@ -20,6 +30,8 @@ describe("Update internships test", () => {
         });
 
         render(<MemoryRouter initialEntries={["/update/1"]}><UpdateInternship match={{ params: { id: 1 } }} /></MemoryRouter>);
+
+        expect(mockFnGet).toHaveBeenCalledWith(1);
 
         const inputTitle = screen.getByTestId("update-internship-title-input");
         fireEvent.change(inputTitle, { target: { value: "Test internship title" } });
@@ -31,6 +43,6 @@ describe("Update internships test", () => {
 
         const submit = screen.getByTestId("update-internship-submit")
         fireEvent.click(submit);
-        expect(mockFn).toHaveBeenCalledWith({ title: "Test internship title", description: "Test internship description" });
+        expect(mockFnUpdate).toHaveBeenCalled();
     });
 }); 

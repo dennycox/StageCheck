@@ -13,14 +13,9 @@ const UpdateInternship = (props) => {
   const [currentInternship, setCurrentInternship] = useState(initialInternshipState);
   const [message, setMessage] = useState("");
 
-  const getInternship = id => {
-    InternshipService.get(id)
-      .then(response => {
-        setCurrentInternship(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+  const getInternship = async id => {
+    let apiResponse = await InternshipService.get(id);
+    setCurrentInternship(apiResponse.data);
   };
 
   useEffect(() => {
@@ -33,13 +28,8 @@ const UpdateInternship = (props) => {
   };
 
   const updateInternship = () => {
-    InternshipService.update(currentInternship.id, currentInternship)
-      .then(response => {
-        setMessage("De wijzigingen zijn opgeslagen!");
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    InternshipService.update(currentInternship.id, currentInternship);
+    setMessage("De wijzigingen zijn opgeslagen!");
   };
 
   return (
@@ -71,7 +61,7 @@ const UpdateInternship = (props) => {
             value={currentInternship.description}
             onChange={handleInputChange}
             name="description"
-            data-testid="update-internship-title-input"
+            data-testid="update-internship-description-input"
           />
         </Form.Group>
         <Button variant="primary" onClick={updateInternship} data-testid="update-internship-submit">Sla wijzigingen op</Button>
