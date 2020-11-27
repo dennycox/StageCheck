@@ -23,10 +23,10 @@ const Internship = ({ internship, ...props }) => {
     };
 
     return (
-        <Card className="my-3" data-testid="card" {...props}>
+        <Card className="my-3" {...props}>
             <Card.Body>
                 <Card.Title>{company.name}</Card.Title>
-                <Card.Text>{internship.title}</Card.Text>
+                <Card.Text data-testid="internship-card-title">{internship.title}</Card.Text>
                 <Card.Text><MdLocationOn color="red"/> {company.streetName} {company.houseNumber} {company.houseNumberAddition}, {company.zipCode} {company.city}</Card.Text>
                 <Link to={"/details/" + internship.id}>Meer informatie</Link>
             </Card.Body>

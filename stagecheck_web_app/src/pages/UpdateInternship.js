@@ -58,6 +58,7 @@ const UpdateInternship = (props) => {
             value={currentInternship.title}
             onChange={handleInputChange}
             name="title"
+            data-testid="update-internship-title-input"
           />
         </Form.Group>
         <Form.Group>
@@ -70,9 +71,10 @@ const UpdateInternship = (props) => {
             value={currentInternship.description}
             onChange={handleInputChange}
             name="description"
+            data-testid="update-internship-title-input"
           />
         </Form.Group>
-        <Button variant="primary" onClick={updateInternship}>Sla wijzigingen op</Button>
+        <Button variant="primary" onClick={updateInternship} data-testid="update-internship-submit">Sla wijzigingen op</Button>
         <p>{message}</p>
       </Form>
     </Container>
