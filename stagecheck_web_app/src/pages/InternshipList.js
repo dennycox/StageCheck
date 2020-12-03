@@ -12,14 +12,9 @@ const InternshipList = () => {
         retrieveInternships();
     }, []);
 
-    const retrieveInternships = (search, studyId) => {
-        InternshipService.getAll(search, studyId)
-            .then(response => {
-                setInternships(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
+    const retrieveInternships = async (search, studyId) => {
+        let apiResponse = await InternshipService.getAll(search, studyId);
+        setInternships(apiResponse.data);
     };
 
     return (

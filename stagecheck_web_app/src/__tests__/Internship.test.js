@@ -1,6 +1,5 @@
 import InternshipService from '../services/InternshipService';
 import { getByTestId, render, screen, waitFor, fireEvent } from "@testing-library/react";
-import App from '../App';
 import InternshipList from '../pages/InternshipList';
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
@@ -39,8 +38,8 @@ describe("Show Internshiplist test", () => {
 
     render(<MemoryRouter initialEntries={["/internships"]}><InternshipList internship={testInternships} /></MemoryRouter>);
 
-    const internshipTitles = screen.getAllByTestId("internship-card-title").map(t => t.testContent);
-    expect(internshipTitles.values).toBe(
+    const internshipTitles = screen.getAllByTestId("internship-card-title").map(t => t.textContent);
+    expect(internshipTitles.textContent).toBe(
       [
         "Test internship title 1",
         "Test internship title 2",
