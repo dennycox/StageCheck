@@ -1,0 +1,18 @@
+﻿@model CompanyListViewModel
+@{ ViewData["Title"] = "Bedrijven"; }
+
+<div>
+    <div class="container pt-3">
+        <h2>Bedrijven</h2>
+        @foreach (var company in Model.Companies)
+        {
+        <div class="card my-3">
+            <div class="card-body">
+                <p class="card-title">@company.Name</p>
+                <p class="card-text"> @company.StreetName @company.HouseNumber @company.HouseNumberAddition, @company.ZipCode</p>
+                <p class="card-text">@company.Website</p>
+                <p class="card-text">@company.PhoneNumber</p>
+            </div>
+        </div>}
+    </div>
+</div>
