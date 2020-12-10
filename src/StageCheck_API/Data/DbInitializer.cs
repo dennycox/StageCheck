@@ -21,31 +21,31 @@ namespace StageCheck_API.Data
             {
                 new Internship{Title="Mechatronica hbo stage 2e jaars",
                     Description="Uitdagende stageopdracht beschikbaar, indien interesse neem contact op",
-                    StudyId=4,
-                    CompanyId=4,
+                    StudyId=1,
+                    CompanyId=2,
                 },
 
                 new Internship{Title="ICT hbo afstudeerstage",
                     Description="Hele leuke en uitdagende afstudeeropdracht, reageer snel want we hebben maar plaats voor een student",
-                    StudyId=3,
+                    StudyId=2,
                     CompanyId=1,
                 },
 
                 new Internship{Title="Bedrijfskunde hbo 2e jaars stage",
                     Description="2 stageplekken vrij, wij zoeken een enthousiaste student die veel wil leren. Neem contact op voor meer informatie",
-                    StudyId=2,
+                    StudyId=3,
                     CompanyId=3,
                 },
 
                 new Internship{Title="Applied Science hbo afstudeerstage",
                     Description="3 Uitdagende stageplek beschikbaar, voor meer informatie neem contact met ons op",
-                    StudyId=1,
-                    CompanyId=2,
+                    StudyId=4,
+                    CompanyId=4,
                 },
 
                 new Internship{Title="hbo software stage",
                     Description="Leerzame stageplek beschikbaar, neem snel contact op voor meer informatie als je geïnteresseerd bent",
-                    StudyId=3,
+                    StudyId=2,
                     CompanyId=5,
                 },
 
