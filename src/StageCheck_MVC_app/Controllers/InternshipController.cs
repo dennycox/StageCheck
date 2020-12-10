@@ -9,33 +9,31 @@ using StageCheck_MVC_app.Models;
 
 namespace StageCheck_MVC_app.Controllers
 {
-    public class CompanyController : Controller
+    public class InternshipController : Controller
     {
         HttpClientHandler clientHandler = new HttpClientHandler();
 
-        List<Company> companies;
+        List<Internship> internships;
 
-        public CompanyController()
+        public InternshipController()
         {
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
         }
 
-        public async Task<IActionResult> CompanyList()
+        public async Task<IActionResult> InternshipList()
         {
-            companies = new List<Company>();
+            internships = new List<Internship>();
 
-            using (var httpClient = new HttpClient())
-            {
-                using (var response = await httpClient.GetAsync("https://localhost:44330/api/Companies"))
+            using (var httpClient = new HttpClient()) {
+                using (var response = await httpClient.GetAsync("http://stagecheck_api:80/api/Internships"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    companies = JsonConvert.DeserializeObject<List<Company>>(apiResponse);
+                    internships = JsonConvert.DeserializeObject<List<Internship>>(apiResponse);
                 }
             }
 
-            CompanyListViewModel viewModel = new CompanyListViewModel()
-            {
-                Companies = companies,
+            InternshipListViewModel viewModel = new InternshipListViewModel() {
+                Internships = internships,
             };
 
             return View(viewModel);

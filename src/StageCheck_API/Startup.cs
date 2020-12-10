@@ -28,7 +28,7 @@ namespace StageCheck_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StageCheckContext>(options =>
-              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+              options.UseInMemoryDatabase("stagecheckdatabase"));
 
             services.AddControllers();
             services.AddCors();
@@ -45,7 +45,8 @@ namespace StageCheck_API
             // Disable when in production!
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-            app.UseHttpsRedirection();
+            // Enable when in production!
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

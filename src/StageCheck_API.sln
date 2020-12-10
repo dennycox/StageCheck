@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StageCheck_API", "StageChec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StageCheck_API_Test", "StageCheck_API_Test\StageCheck_API_Test.csproj", "{F6BF9C8F-5165-4652-8537-C047494C4C8B}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5303E3C1-9C03-4371-8B6B-5DC9FC66D401}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StageCheck_MVC_app", "StageCheck_MVC_app\StageCheck_MVC_app.csproj", "{350E5B8F-EFE3-429C-B5C9-0534BF730C7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F6BF9C8F-5165-4652-8537-C047494C4C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6BF9C8F-5165-4652-8537-C047494C4C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6BF9C8F-5165-4652-8537-C047494C4C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5303E3C1-9C03-4371-8B6B-5DC9FC66D401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5303E3C1-9C03-4371-8B6B-5DC9FC66D401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5303E3C1-9C03-4371-8B6B-5DC9FC66D401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5303E3C1-9C03-4371-8B6B-5DC9FC66D401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{350E5B8F-EFE3-429C-B5C9-0534BF730C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{350E5B8F-EFE3-429C-B5C9-0534BF730C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{350E5B8F-EFE3-429C-B5C9-0534BF730C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{350E5B8F-EFE3-429C-B5C9-0534BF730C7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
