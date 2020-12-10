@@ -18,11 +18,11 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore
-      working-directory: StageCheck_API
+      run: dotnet restore StageCheck_API.sln
+      working-directory: src
     - name: Build
-      run: dotnet build --configuration Release --no-restore
-      working-directory: StageCheck_API
+      run: dotnet build StageCheck_API.sln --configuration Release --no-restore
+      working-directory: src
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
-      working-directory: StageCheck_API
+      run: dotnet test StageCheck_API.sln --no-restore --verbosity normal
+      working-directory: src
