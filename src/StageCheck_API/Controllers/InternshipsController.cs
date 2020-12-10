@@ -35,7 +35,7 @@ namespace StageCheck_API.Controllers
 
             if (!string.IsNullOrWhiteSpace(search))
             {
-                query = query.Where(x => x.Title.Contains(search.Trim()));
+                query = query.Where(x => x.Title.ToLower().Contains(search.Trim().ToLower()));
             }
             
             return await query.Select(x => InternshipToDTO(x)).ToListAsync();
