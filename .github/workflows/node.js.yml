@@ -25,8 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-      working-directory: stagecheck_web_app
+      working-directory: src/stagecheck_web_app
     - run: npm run build --if-present
-      working-directory: stagecheck_web_app
+      working-directory: src/stagecheck_web_app
     - run: npm test
-      working-directory: stagecheck_web_app
+      working-directory: src/stagecheck_web_app
