@@ -1,0 +1,18 @@
+﻿@model InternshipListViewModel
+@{
+    ViewData["Title"] = "Stages";
+}
+
+<div>
+    <div class="container pt-3">
+        <h2>Stages</h2>
+        @foreach (var internship in Model.Internships)
+        {
+    <div class="card my-3">
+        <div class="card-body">
+            <p class="card-title">@internship.Title</p>
+            <p class="card-text">@internship.Description</p>
+        </div>
+    </div>}
+    </div>
+</div>
