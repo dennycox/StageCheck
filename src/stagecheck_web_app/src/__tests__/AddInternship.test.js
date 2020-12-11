@@ -8,16 +8,14 @@ jest.mock('../services/InternshipService');
 
 describe("Add internships test", () => {
     it("Successfully fills in and submits form", () => {
-        const mockFn = InternshipService.create.mockImplementation(data => {
-            console.log(data);
-            return {
-                data: {
-                    id: 1,
-                    title: "Test internship title",
-                    description: "Test internship description"
-                }
-            };
-        });
+        const mockFn = InternshipService.create.mockImplementation(() => Promise.resolve({
+            data:
+            {
+                id: 1,
+                title: "Test internship title",
+                description: "Test internship description"
+            }
+        }));
 
         render(<MemoryRouter initialEntries={["/add"]}><AddInternship /></MemoryRouter>);
 

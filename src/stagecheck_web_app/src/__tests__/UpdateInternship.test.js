@@ -8,26 +8,21 @@ jest.mock('../services/InternshipService');
 
 describe("Update internships test", () => {
     it("Successfully updates and submits form", () => {
-        const mockFnGet = InternshipService.get.mockImplementation(data => {
-            console.log(data);
-            return {
-                data: {
-                    id: 1
-                }
-            };
-        });
+        const mockFnGet = InternshipService.get.mockImplementation(() => Promise.resolve({
+            data:
+            {
+                id: 1
+            }
+        }));
 
-        const mockFnUpdate = InternshipService.update.mockImplementation(data => {
-            console.log(data);
-            return {
-                data:
-                {    
-                    id: 1,
-                    title: "Test internship title",
-                    description: "Test internship description"
-                }
-            };
-        });
+        const mockFnUpdate = InternshipService.update.mockImplementation(() => Promise.resolve({
+            data:
+            {
+                id: 1,
+                title: "Test internship title",
+                description: "Test internship description"
+            }
+        }));
 
         render(<MemoryRouter initialEntries={["/update/1"]}><UpdateInternship match={{ params: { id: 1 } }} /></MemoryRouter>);
 

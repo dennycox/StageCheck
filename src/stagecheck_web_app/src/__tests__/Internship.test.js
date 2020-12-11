@@ -8,22 +8,21 @@ jest.mock('../services/InternshipService');
 
 describe("Show Internshiplist test", () => {
   it.skip("Successfully Renders internships", () => {
-    const mockFn = InternshipService.getAll.mockImplementation(data => {
-      console.log(data);
-      return {
-        data: [{
-          id: 1,
-          title: "Test internship title 1",
-          description: "Test internship description 1"
-        },
-        {
-          id: 2,
-          title: "Test internship title 2",
-          description: "Test internship description 2"
-        }
+    const mockFn = InternshipService.getAll.mockImplementation(() => Promise.resolve({
+      data:
+        [
+          {
+            id: 1,
+            title: "Test internship title 1",
+            description: "Test internship description 1"
+          },
+          {
+            id: 2,
+            title: "Test internship title 2",
+            description: "Test internship description 2"
+          }
         ]
-      };
-    });
+    }));
 
     const testInternships = [{
       id: 1,

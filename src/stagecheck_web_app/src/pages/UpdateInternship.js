@@ -13,9 +13,14 @@ const UpdateInternship = (props) => {
   const [currentInternship, setCurrentInternship] = useState(initialInternshipState);
   const [message, setMessage] = useState("");
 
-  const getInternship = async id => {
-    let apiResponse = await InternshipService.get(id);
-    setCurrentInternship(apiResponse.data);
+  const getInternship = id => {
+    InternshipService.get(id)
+      .then(response => {
+        setCurrentInternship(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   useEffect(() => {
@@ -28,8 +33,13 @@ const UpdateInternship = (props) => {
   };
 
   const updateInternship = () => {
-    InternshipService.update(currentInternship.id, currentInternship);
-    setMessage("De wijzigingen zijn opgeslagen!");
+    InternshipService.update(currentInternship.id, currentInternship)
+      .then(response => {
+        setMessage("De wijzigingen zijn opgeslagen!");
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
 
   return (
