@@ -29,8 +29,8 @@ const InternshipList = () => {
                 <Link to={"/add"}>
                     <Button variant="primary">Stage toevoegen</Button>
                 </Link>
-                {internships.map((internship) => (
-                    <Internship key={internship.id} internship={internship} />
+                {internships.map((internship, idx) => (
+                    <Internship key={internship.id} internship={internship} index={idx} />
                 ))}
             </Container>
         </div>
