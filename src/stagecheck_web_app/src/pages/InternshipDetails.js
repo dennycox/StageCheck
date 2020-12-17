@@ -44,7 +44,7 @@ const InternshipDetails = props => {
             <Link to={"/internships"}>
                 <Button variant="primary">Terug</Button>
             </Link>
-            <h3>{currentInternship.title}</h3>
+            <h3 data-testid="internship-details-title">{currentInternship.title}</h3>
             <p>{currentInternship.description}</p>
             {currentInternship.companyId ? (
                 <Company companyId={currentInternship.companyId} />
