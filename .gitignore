@@ -287,8 +287,7 @@ psd
 thumb
 sketch
 
-# Ignore test-related files
-/coverage.data
-/coverage/
+# Test coverage files
+coverage
 
 # End of https://www.toptal.com/developers/gitignore/api/aspnetcore,react
