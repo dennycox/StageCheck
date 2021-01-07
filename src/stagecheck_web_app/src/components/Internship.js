@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import CompanyService from '../services/CompanyService';
 import { MdLocationOn } from "react-icons/md";
 
-const Internship = ({ internship, index, ...props}) => {
+const Internship = ({ internship, index, ...props }) => {
 
     const [company, setCompany] = useState([]);
-    
+
     useEffect(() => {
         getCompany(internship.companyId);
     }, [internship.companyId]);
@@ -25,9 +25,13 @@ const Internship = ({ internship, index, ...props}) => {
     return (
         <Card className="my-3" {...props}>
             <Card.Body>
-                <Card.Title>{company.name}</Card.Title>
+                {company.id ? (
+                    <Card.Title>{company.name}</Card.Title>
+                ) : (<div />)}
                 <Card.Text data-testid={"internship-card-title" + index}>{internship.title}</Card.Text>
-                <Card.Text><MdLocationOn color="red"/> {company.streetName} {company.houseNumber} {company.houseNumberAddition}, {company.zipCode} {company.city}</Card.Text>
+                {company.id ? (
+                    <Card.Text><MdLocationOn color="red" /> {company.streetName} {company.houseNumber} {company.houseNumberAddition}, {company.zipCode} {company.city}</Card.Text>
+                ) : (<div />)}
                 <Link to={"/details/" + internship.id}>Meer informatie</Link>
             </Card.Body>
         </Card>
